@@ -1,11 +1,12 @@
-# Welcome to your Jupyter Book
+# Welcome to site Proyek Sains Data
 
-This is a small sample book to give you a feel for how book content is
-structured.
-It shows off a few of the major file types, as well as some sample content.
-It does not go in-depth into any particular topic - check out [the Jupyter Book documentation](https://jupyterbook.org) for more information.
+Perkenalkan saya Fathan yang berasal dari Lumajang, Jawa Timur. Saya saat ini sedang menempuh studi di Universitas Trunojoyo Madura pada jurusan Teknik Informatika. Saya memiliki anthusias belajar dalam bidang Web Programming dan Data Science.
 
-Check out the content pages bundled with this sample book to see more.
+Nama Lengkap: Muhammad Fathan Alizain
+NIM : 230411100181
+Email : alizainfathan@gmail.com
+
+Silahkan klik link dibawah ini untuk mendapatkan informasi lebih lanjut mengenai Proyek Sains Data.
 
 ```{tableofcontents}
 ```
