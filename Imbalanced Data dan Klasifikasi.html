@@ -1,0 +1,1544 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Imbalanced Data dan Klasifikasi Data &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Imbalanced Data dan Klasifikasi';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Analisis Data Menggunakan Tools KNIME" href="Analisis%20Data%20KNIME.html" />
+    <link rel="prev" title="Imbalanced Data" href="Imbalanced%20Data.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.jpg" class="logo__image only-light" alt="My sample book - Home"/>
+    <script>document.write(`<img src="_static/logo.jpg" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to site Proyek Sains Data
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Bussiness%20Understanding.html">Bussiness Understanding Tokepedia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Data%20Understanding.html">Data Understanding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Data_Understanding.html">Data Understanding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Data_Understanding%20dan%20Eksplorasi%20Data.html">Data Understanding dan Eksplorasi Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Data_Prepocessing.html">Prepocessing Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Imbalanced%20Data.html">Imbalanced Data</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Imbalanced Data dan Klasifikasi Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Analisis%20Data%20KNIME.html">Analisis Data Menggunakan Tools KNIME</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Peramalan_Kualitas_Polusi_NO2.html">Peramalan Kualitas Polusi NO2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Voice%20Detection.html">Voice Detection</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FImbalanced Data dan Klasifikasi.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Imbalanced Data dan Klasifikasi.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Imbalanced Data dan Klasifikasi Data</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-library-yang-digunakan">Install library yang digunakan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengambil-data-e-coli-dalam-database-mysql">Mengambil Data E-Coli dalam Database Mysql</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transformasi-data-dalam-bentuk-2-dimensi-menggunakan-pca">Transformasi Data dalam Bentuk 2 Dimensi menggunakan PCA</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cara-mengetahui-total-data-dalam-setiap-class">Cara Mengetahui Total data dalam Setiap CLass</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#balancing-data-menggunakan-smote">Balancing data menggunakan SMOTE</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grafik-batang-persebaran-data-balancing-smote">Grafik Batang Persebaran Data Balancing SMOTE</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#balancing-data-menggunakan-adasyn">Balancing Data menggunakan ADASYN</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grafik-batang-persebaran-data-balancing-adasyn">Grafik Batang Persebaran Data Balancing ADASYN</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ploting-data-setelah-proses-smote-menggunakan-pca">Ploting Data Setelah Proses SMOTE menggunakan PCA</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ploting-data-setelah-proses-adasyn-menggunakan-pca">Ploting Data Setelah Proses ADASYN menggunakan PCA</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#klasifikasi-menggunakan-naive-bayes">Klasifikasi Menggunakan Naive Bayes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-ecoli-asli-sebelum-mendapatkan-balancing">Data Ecoli Asli (Sebelum mendapatkan Balancing)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-ecoli-asli-setelah-mendapatkan-balancing-smote">Data Ecoli Asli (Setelah mendapatkan Balancing SMOTE)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-ecoli-asli-setelah-mendapatkan-balancing-adasyn">Data Ecoli Asli (Setelah mendapatkan Balancing ADASYN)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#klasifikasi-menggunakan-random-forest">Klasifikasi Menggunakan Random Forest</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Data Ecoli Asli (Sebelum mendapatkan Balancing)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Data Ecoli Asli (Setelah mendapatkan Balancing SMOTE)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Data Ecoli Asli (Setelah mendapatkan Balancing ADASYN)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bagging-classifier">Bagging Classifier</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bagging-classifier-menggunakan-model-naive-bayes">Bagging Classifier Menggunakan Model Naive Bayes</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bagging-classifier-naive-bayes-pada-data-hasil-balanced-smote">Bagging Classifier Naive Bayes pada Data Hasil Balanced SMOTE</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bagging-classifier-naive-bayes-pada-data-hasil-balanced-adasyn">Bagging Classifier Naive Bayes pada Data Hasil Balanced ADASYN</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bagging-classifier-menggunakan-model-random-forest">Bagging Classifier Menggunakan Model Random Forest</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bagging-classifier-random-forest-pada-data-hasil-balanced-smote">Bagging Classifier Random Forest pada Data Hasil Balanced SMOTE</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bagging-classifier-random-forest-pada-data-hasil-balanced-adasyn">Bagging Classifier Random Forest pada Data Hasil Balanced ADASYN</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="imbalanced-data-dan-klasifikasi-data">
+<h1>Imbalanced Data dan Klasifikasi Data<a class="headerlink" href="#imbalanced-data-dan-klasifikasi-data" title="Link to this heading">#</a></h1>
+<p>Imbalanced data adalah kondisi ketika distribusi kelas dalam suatu dataset tidak seimbang, artinya jumlah sampel dari satu kelas jauh lebih banyak dibandingkan kelas lainnya. Misalnya, dalam dataset deteksi penipuan, data transaksi normal bisa mencapai 99%, sedangkan data penipuan hanya 1%.</p>
+<p>Kondisi ini sering menjadi masalah dalam machine learning karena model cenderung bias terhadap kelas mayoritas. Akibatnya, meskipun akurasi terlihat tinggi, performa model dalam mengenali kelas minoritas (yang justru sering lebih penting) bisa sangat rendah.</p>
+<section id="install-library-yang-digunakan">
+<h2>Install library yang digunakan<a class="headerlink" href="#install-library-yang-digunakan" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>pymysql
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.decomposition</span><span class="w"> </span><span class="kn">import</span> <span class="n">PCA</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">Counter</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[notice] A new release of pip is available: 25.2 -&gt; 25.3
+[notice] To update, run: python.exe -m pip install --upgrade pip
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: pymysql in c:\users\fathan\appdata\local\programs\python\python311\lib\site-packages (1.1.1)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="mengambil-data-e-coli-dalam-database-mysql">
+<h2>Mengambil Data E-Coli dalam Database Mysql<a class="headerlink" href="#mengambil-data-e-coli-dalam-database-mysql" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pymysql</span>
+
+<span class="c1"># koneksi ke database mysql melalui aiven.io</span>
+<span class="n">DB_HOST</span> <span class="o">=</span> <span class="s2">&quot;mysql-131f3e28-fathanlearn-5ad0.i.aivencloud.com&quot;</span>
+<span class="n">DB_PORT</span> <span class="o">=</span> <span class="mi">25962</span>
+<span class="n">DB_NAME</span> <span class="o">=</span> <span class="s2">&quot;defaultdb&quot;</span>
+<span class="n">DB_USER</span> <span class="o">=</span> <span class="s2">&quot;avnadmin&quot;</span>
+<span class="n">DB_PASS</span> <span class="o">=</span> <span class="s2">&quot;AVNS_hCKUXEhLqojSjCxujVo&quot;</span>
+
+<span class="n">conn</span> <span class="o">=</span> <span class="n">pymysql</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
+    <span class="n">host</span><span class="o">=</span><span class="n">DB_HOST</span><span class="p">,</span>
+    <span class="n">port</span><span class="o">=</span><span class="n">DB_PORT</span><span class="p">,</span>
+    <span class="n">database</span><span class="o">=</span><span class="n">DB_NAME</span><span class="p">,</span>
+    <span class="n">user</span><span class="o">=</span><span class="n">DB_USER</span><span class="p">,</span>
+    <span class="n">password</span><span class="o">=</span><span class="n">DB_PASS</span><span class="p">,</span>
+    <span class="n">ssl</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;ssl&#39;</span><span class="p">:</span> <span class="p">{}}</span>
+<span class="p">)</span>
+
+<span class="n">data_mysql</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+
+<span class="c1"># ambil data ke database</span>
+<span class="n">data_mysql</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM ecoli.data_ecoli;&quot;</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data_mysql</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;10 data dalam tabel ecoli: &quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">gaierror</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="nn">File ~\AppData\Local\Programs\Python\Python311\Lib\site-packages\pymysql\connections.py:649,</span> in <span class="ni">Connection.connect</span><span class="nt">(self, sock)</span>
+<span class="g g-Whitespace">    </span><span class="mi">648</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">649</span>     <span class="n">sock</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">create_connection</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">650</span>         <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">host</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">port</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">connect_timeout</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+<span class="g g-Whitespace">    </span><span class="mi">651</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">652</span>     <span class="k">break</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python311\Lib\socket.py:827,</span> in <span class="ni">create_connection</span><span class="nt">(address, timeout, source_address, all_errors)</span>
+<span class="g g-Whitespace">    </span><span class="mi">826</span> <span class="n">exceptions</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="ne">--&gt; </span><span class="mi">827</span> <span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="n">getaddrinfo</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">SOCK_STREAM</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">828</span>     <span class="n">af</span><span class="p">,</span> <span class="n">socktype</span><span class="p">,</span> <span class="n">proto</span><span class="p">,</span> <span class="n">canonname</span><span class="p">,</span> <span class="n">sa</span> <span class="o">=</span> <span class="n">res</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python311\Lib\socket.py:962,</span> in <span class="ni">getaddrinfo</span><span class="nt">(host, port, family, type, proto, flags)</span>
+<span class="g g-Whitespace">    </span><span class="mi">961</span> <span class="n">addrlist</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="ne">--&gt; </span><span class="mi">962</span> <span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="n">_socket</span><span class="o">.</span><span class="n">getaddrinfo</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="n">family</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">proto</span><span class="p">,</span> <span class="n">flags</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">963</span>     <span class="n">af</span><span class="p">,</span> <span class="n">socktype</span><span class="p">,</span> <span class="n">proto</span><span class="p">,</span> <span class="n">canonname</span><span class="p">,</span> <span class="n">sa</span> <span class="o">=</span> <span class="n">res</span>
+
+<span class="ne">gaierror</span>: [Errno 11001] getaddrinfo failed
+
+<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
+
+<span class="ne">OperationalError</span><span class="g g-Whitespace">                          </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">10</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">DB_USER</span> <span class="o">=</span> <span class="s2">&quot;avnadmin&quot;</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">DB_PASS</span> <span class="o">=</span> <span class="s2">&quot;AVNS_hCKUXEhLqojSjCxujVo&quot;</span>
+<span class="ne">---&gt; </span><span class="mi">10</span> <span class="n">conn</span> <span class="o">=</span> <span class="n">pymysql</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span>     <span class="n">host</span><span class="o">=</span><span class="n">DB_HOST</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span>     <span class="n">port</span><span class="o">=</span><span class="n">DB_PORT</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span>     <span class="n">database</span><span class="o">=</span><span class="n">DB_NAME</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span>     <span class="n">user</span><span class="o">=</span><span class="n">DB_USER</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span>     <span class="n">password</span><span class="o">=</span><span class="n">DB_PASS</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span>     <span class="n">ssl</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;ssl&#39;</span><span class="p">:</span> <span class="p">{}}</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="n">data_mysql</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">21</span> <span class="c1"># ambil data ke database</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python311\Lib\site-packages\pymysql\connections.py:361,</span> in <span class="ni">Connection.__init__</span><span class="nt">(self, user, password, host, database, unix_socket, port, charset, collation, sql_mode, read_default_file, conv, use_unicode, client_flag, cursorclass, init_command, connect_timeout, read_default_group, autocommit, local_infile, max_allowed_packet, defer_connect, auth_plugin_map, read_timeout, write_timeout, bind_address, binary_prefix, program_name, server_public_key, ssl, ssl_ca, ssl_cert, ssl_disabled, ssl_key, ssl_key_password, ssl_verify_cert, ssl_verify_identity, compress, named_pipe, passwd, db)</span>
+<span class="g g-Whitespace">    </span><span class="mi">359</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_sock</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="g g-Whitespace">    </span><span class="mi">360</span> <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">361</span>     <span class="bp">self</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python311\Lib\site-packages\pymysql\connections.py:716,</span> in <span class="ni">Connection.connect</span><span class="nt">(self, sock)</span>
+<span class="g g-Whitespace">    </span><span class="mi">714</span>     <span class="k">if</span> <span class="n">DEBUG</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">715</span>         <span class="nb">print</span><span class="p">(</span><span class="n">exc</span><span class="o">.</span><span class="n">traceback</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">716</span>     <span class="k">raise</span> <span class="n">exc</span>
+<span class="g g-Whitespace">    </span><span class="mi">718</span> <span class="c1"># If e is neither DatabaseError or IOError, It&#39;s a bug.</span>
+<span class="g g-Whitespace">    </span><span class="mi">719</span> <span class="c1"># But raising AssertionError hides original error.</span>
+<span class="g g-Whitespace">    </span><span class="mi">720</span> <span class="c1"># So just reraise it.</span>
+<span class="g g-Whitespace">    </span><span class="mi">721</span> <span class="k">raise</span>
+
+<span class="ne">OperationalError</span>: (2003, &quot;Can&#39;t connect to MySQL server on &#39;mysql-131f3e28-fathanlearn-5ad0.i.aivencloud.com&#39; ([Errno 11001] getaddrinfo failed)&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="transformasi-data-dalam-bentuk-2-dimensi-menggunakan-pca">
+<h2>Transformasi Data dalam Bentuk 2 Dimensi menggunakan PCA<a class="headerlink" href="#transformasi-data-dalam-bentuk-2-dimensi-menggunakan-pca" title="Link to this heading">#</a></h2>
+<p>Principal Component Analysis (PCA) adalah teknik dimensionality reduction yang digunakan untuk mengubah data berdimensi tinggi menjadi dimensi yang lebih rendah, dengan tetap mempertahankan sebanyak mungkin informasi penting dari data.</p>
+<p>Proses PCA melibatkan transformasi data asli ke dalam komponen utama (principal components), yaitu kombinasi linier dari variabel-variabel awal. Komponen utama ini dipilih berdasarkan varian data terbesar, sehingga pola utama dalam data dapat tetap terjaga meskipun jumlah dimensinya berkurang.</p>
+<p>Langkah-Langkah PCA dalam mereduksi data:</p>
+<ol class="arabic simple">
+<li><p>Standarisasi data → menyamakan skala tiap fitur.</p></li>
+<li><p>Membentuk matriks kovarians → untuk melihat hubungan antar variabel.</p></li>
+<li><p>Menghitung eigenvalue &amp; eigenvector → menentukan arah dan besarnya variasi data.</p></li>
+<li><p>Menyusun principal components → memilih komponen dengan eigenvalue terbesar.</p></li>
+<li><p>Transformasi data → memproyeksikan data asli ke sumbu baru (principal components).</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># meload data yang telah diambil dari database</span>
+<span class="n">df_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;id_ecoli&quot;</span><span class="p">,</span> <span class="s2">&quot;mcg&quot;</span><span class="p">,</span> <span class="s2">&quot;gvh&quot;</span><span class="p">,</span> <span class="s2">&quot;lip&quot;</span><span class="p">,</span> <span class="s2">&quot;chg&quot;</span><span class="p">,</span> <span class="s2">&quot;aac&quot;</span><span class="p">,</span> <span class="s2">&quot;alm1&quot;</span><span class="p">,</span> <span class="s2">&quot;alm2&quot;</span><span class="p">,</span> <span class="s2">&quot;class&quot;</span><span class="p">])</span>
+<span class="c1"># seleksi data non id dan class</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df_data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;class&quot;</span><span class="p">,</span> <span class="s2">&quot;id_ecoli&quot;</span><span class="p">])</span>
+<span class="c1"># ambil data class</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df_data</span><span class="p">[</span><span class="s2">&quot;class&quot;</span><span class="p">]</span>
+
+<span class="c1"># pembuatan model pca dengan 2 dimensi</span>
+<span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="c1"># proses training</span>
+<span class="n">X_r</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="c1"># mengubah data hasil train ke dataframe dan disimpan dalam dua kolom</span>
+<span class="n">df_pca</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X_r</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;PC1&quot;</span><span class="p">,</span> <span class="s2">&quot;PC2&quot;</span><span class="p">])</span>
+<span class="n">df_pca</span><span class="p">[</span><span class="s2">&quot;class&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">values</span>
+
+<span class="c1"># membuat kanvas</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;navy&quot;</span><span class="p">,</span> <span class="s2">&quot;turquoise&quot;</span><span class="p">,</span> <span class="s2">&quot;darkorange&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;purple&quot;</span><span class="p">,</span> <span class="s2">&quot;brown&quot;</span><span class="p">]</span>
+
+<span class="c1"># perulangan untuk setiap data dalam class</span>
+<span class="k">for</span> <span class="n">color</span><span class="p">,</span> <span class="n">target_name</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">colors</span><span class="p">,</span> <span class="n">df_pca</span><span class="p">[</span><span class="s2">&quot;class&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()):</span>
+    <span class="c1"># matching class data dengan class iterasi saat ini</span>
+    <span class="n">subset</span> <span class="o">=</span> <span class="n">df_pca</span><span class="p">[</span><span class="n">df_pca</span><span class="p">[</span><span class="s2">&quot;class&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">target_name</span><span class="p">]</span>
+    <span class="c1"># proses plotting data menggunakan scatter</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">subset</span><span class="p">[</span><span class="s2">&quot;PC1&quot;</span><span class="p">],</span> <span class="n">subset</span><span class="p">[</span><span class="s2">&quot;PC2&quot;</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">target_name</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;best&quot;</span><span class="p">,</span> <span class="n">shadow</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">scatterpoints</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;PCA of Ecoli Dataset (2 Components)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;PC1&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;PC2&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/695033c3c94dce1edc5b566a11f6963850b264db51e35ed1cfb5e86f340040a8.png" src="_images/695033c3c94dce1edc5b566a11f6963850b264db51e35ed1cfb5e86f340040a8.png" />
+</div>
+</div>
+</section>
+<section id="cara-mengetahui-total-data-dalam-setiap-class">
+<h2>Cara Mengetahui Total data dalam Setiap CLass<a class="headerlink" href="#cara-mengetahui-total-data-dalam-setiap-class" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total data dalam setiap class: &quot;</span><span class="p">)</span>
+<span class="c1"># library counter untuk menghitung jumlah data dalam suatu class</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Counter</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total data dalam setiap class: 
+Counter({&#39;cp&#39;: 143, &#39;im&#39;: 77, &#39;pp&#39;: 52, &#39;imU&#39;: 35, &#39;om&#39;: 20, &#39;omL&#39;: 5, &#39;imS&#39;: 2, &#39;imL&#39;: 2})
+</pre></div>
+</div>
+</div>
+</div>
+<p>Berdasarkan output di atas dapat disimpulkan bahwa beberapa class memiliki imbalance data yakni class oml, ims, dan iml. Dengan begitu, diperlukan Balancing data menggunakan beberapa metode seperti SMOTE dan ADASYN.</p>
+</section>
+<section id="balancing-data-menggunakan-smote">
+<h2>Balancing data menggunakan SMOTE<a class="headerlink" href="#balancing-data-menggunakan-smote" title="Link to this heading">#</a></h2>
+<p>SMOTE adalah metode oversampling yang digunakan untuk mengatasi masalah imbalanced data, yaitu ketika jumlah sampel pada kelas minoritas jauh lebih sedikit dibandingkan kelas mayoritas.</p>
+<p>Berbeda dengan oversampling biasa (sekedar menggandakan data minoritas), SMOTE membuat data sintetis baru untuk kelas minoritas dengan cara menginterpolasi antara sampel yang ada. Dengan demikian, dataset menjadi lebih seimbang tanpa sekedar menduplikasi data.</p>
+<p>Langkah-Langkah Balancing data menggunakan SMOTE:</p>
+<ol class="arabic simple">
+<li><p>Identifikasi satu titik dari kelas minoritas.</p></li>
+<li><p>Tentukan k tetangga terdekat.</p></li>
+<li><p>Buat data sintetik diantara titik dan tetangga tersebut.</p></li>
+<li><p>Ulangi 1 sampai 3 untuk seluruh titik titik minoritas.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">imblearn.over_sampling</span><span class="w"> </span><span class="kn">import</span> <span class="n">SMOTE</span>
+
+<span class="c1"># Jumlah data dalam class sebelum proses SMOTE</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sebelum SMOTE:&quot;</span><span class="p">,</span> <span class="n">Counter</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+
+<span class="c1"># membuat model SMOTE</span>
+<span class="n">smote</span> <span class="o">=</span> <span class="n">SMOTE</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">k_neighbors</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># proses training atau resampling</span>
+<span class="n">X_resampling</span><span class="p">,</span> <span class="n">y_resampling</span> <span class="o">=</span> <span class="n">smote</span><span class="o">.</span><span class="n">fit_resample</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="c1">#  Jumlah data dalam class sesudah proses SMOTE</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sesudah SMOTE:&quot;</span><span class="p">,</span> <span class="n">Counter</span><span class="p">(</span><span class="n">y_resampling</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sebelum SMOTE: Counter({&#39;cp&#39;: 143, &#39;im&#39;: 77, &#39;pp&#39;: 52, &#39;imU&#39;: 35, &#39;om&#39;: 20, &#39;omL&#39;: 5, &#39;imS&#39;: 2, &#39;imL&#39;: 2})
+Sesudah SMOTE: Counter({&#39;im&#39;: 143, &#39;cp&#39;: 143, &#39;pp&#39;: 143, &#39;imU&#39;: 143, &#39;imS&#39;: 143, &#39;om&#39;: 143, &#39;imL&#39;: 143, &#39;omL&#39;: 143})
+</pre></div>
+</div>
+</div>
+</div>
+<section id="grafik-batang-persebaran-data-balancing-smote">
+<h3>Grafik Batang Persebaran Data Balancing SMOTE<a class="headerlink" href="#grafik-batang-persebaran-data-balancing-smote" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Data sebelum smote</span>
+<span class="n">data_sebelum_SMOTE</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="n">sorted_items</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">data_sebelum_SMOTE</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">label_SMOTE</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">sorted_items</span><span class="p">]</span>
+<span class="n">jumlah_sebelum_smote</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">sorted_items</span><span class="p">]</span>
+
+<span class="c1"># Membuat grafik batang</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">label_SMOTE</span><span class="p">,</span> <span class="n">jumlah_sebelum_smote</span><span class="p">)</span>
+
+<span class="c1"># Menambahkan label angka di atas batang</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">jumlah_sebelum_smote</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">val</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">val</span><span class="p">),</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">)</span>
+
+<span class="c1"># Judul dan label sumbu</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Grafik Bar Data E-Coli Sebelum Smote&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Class&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Jumlah&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Data Setelah SMOTE</span>
+<span class="n">data_setelah_SMOTE</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">y_resampling</span><span class="p">)</span>
+<span class="n">sorted_items_after</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">data_setelah_SMOTE</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">label_SMOTE</span> <span class="o">=</span> <span class="p">[</span><span class="n">item_res</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">item_res</span> <span class="ow">in</span> <span class="n">sorted_items_after</span><span class="p">]</span>
+<span class="n">jumlah_setelah_smote</span> <span class="o">=</span> <span class="p">[</span><span class="n">item_res</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">item_res</span> <span class="ow">in</span> <span class="n">sorted_items_after</span><span class="p">]</span>
+
+<span class="c1"># Membuat grafik batang</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">label_SMOTE</span><span class="p">,</span> <span class="n">jumlah_setelah_smote</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">)</span>
+
+<span class="c1"># Menambahkan label angka di atas batang</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">jumlah_setelah_smote</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">val</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">val</span><span class="p">),</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">)</span>
+
+<span class="c1"># Judul dan label sumbu</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Grafik Bar Data E-Coli Setelah Smote&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Class&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Jumlah&quot;</span><span class="p">)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/d6b8f0c7351f3987f292d67d0cc4bbbb52da6bac60ce6c35ab0feaf503b40cae.png" src="_images/d6b8f0c7351f3987f292d67d0cc4bbbb52da6bac60ce6c35ab0feaf503b40cae.png" />
+<img alt="_images/b06163580ec9091b9a4c43d12a1e56a913c4718f1427326631935c1bbd333bdd.png" src="_images/b06163580ec9091b9a4c43d12a1e56a913c4718f1427326631935c1bbd333bdd.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="balancing-data-menggunakan-adasyn">
+<h2>Balancing Data menggunakan ADASYN<a class="headerlink" href="#balancing-data-menggunakan-adasyn" title="Link to this heading">#</a></h2>
+<p>ADASYN adalah teknik oversampling yang dikembangkan untuk mengatasi imbalanced data, mirip seperti SMOTE, namun dengan pendekatan yang lebih adaptif.</p>
+<p>Tujuan ADASYN adalah menghasilkan sampel sintetis untuk kelas minoritas, tetapi fokus pada contoh yang lebih sulit dipelajari (hard-to-learn samples). Artinya, data minoritas yang berada di dekat kelas mayoritas akan mendapatkan lebih banyak sampel sintetis dibandingkan yang sudah mudah diprediksi.</p>
+<p>Langkah-Langkah Balancing data menggunakan ADASYN:</p>
+<ol class="arabic simple">
+<li><p>Hitung k-nearest neighbors (KNN) untuk setiap sampel minoritas.</p></li>
+<li><p>Tentukan kesulitan belajar setiap sampel minoritas berdasarkan jumlah tetangga mayoritas di sekitarnya.</p></li>
+<li><p>Buat sampel sintetis proporsional dengan tingkat kesulitan:</p></li>
+</ol>
+<ul class="simple">
+<li><p>Sampel minoritas yang sulit dipelajari → lebih banyak sampel sintetis</p></li>
+<li><p>Sampel minoritas yang mudah dipelajari → lebih sedikit sampel sintetis</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">imblearn.over_sampling</span><span class="w"> </span><span class="kn">import</span> <span class="n">ADASYN</span>
+
+<span class="c1"># Jumlah data dalam class # sebelum proses ADASYN</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sebelum ADASYN:&quot;</span><span class="p">,</span> <span class="n">Counter</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+
+<span class="c1"># Copy data utuk fitur dan class</span>
+<span class="n">X_res_adasyn</span><span class="p">,</span> <span class="n">y_res_adasyn</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span> <span class="n">y</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="c1"># ambil jumlah sampel per kelas</span>
+<span class="n">class_counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="bp">cls</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">class_counts</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+  <span class="c1"># hanya resample kelas minor</span>
+    <span class="k">if</span> <span class="n">count</span> <span class="o">&lt;</span> <span class="nb">max</span><span class="p">(</span><span class="n">class_counts</span><span class="o">.</span><span class="n">values</span><span class="p">()):</span>
+      <span class="c1"># pemberaian nilai k otommatis berdasarkan jumlah data</span>
+        <span class="n">k</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">count</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Kelas </span><span class="si">{</span><span class="bp">cls</span><span class="si">}</span><span class="s2">: jumlah=</span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2">, menggunakan n_neighbors=</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="c1"># pembuatan model ADASYN</span>
+        <span class="n">adasyn</span> <span class="o">=</span> <span class="n">ADASYN</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">sampling_strategy</span><span class="o">=</span><span class="p">{</span><span class="bp">cls</span><span class="p">:</span> <span class="nb">max</span><span class="p">(</span><span class="n">class_counts</span><span class="o">.</span><span class="n">values</span><span class="p">())},</span> <span class="n">n_neighbors</span><span class="o">=</span><span class="n">k</span><span class="p">)</span>
+        <span class="c1"># proses training ADASYN</span>
+        <span class="n">X_res_adasyn</span><span class="p">,</span> <span class="n">y_res_adasyn</span> <span class="o">=</span> <span class="n">adasyn</span><span class="o">.</span><span class="n">fit_resample</span><span class="p">(</span><span class="n">X_res_adasyn</span><span class="p">,</span> <span class="n">y_res_adasyn</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sesudah ADASYN:&quot;</span><span class="p">,</span> <span class="n">Counter</span><span class="p">(</span><span class="n">y_res_adasyn</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sebelum ADASYN: Counter({&#39;cp&#39;: 143, &#39;im&#39;: 77, &#39;pp&#39;: 52, &#39;imU&#39;: 35, &#39;om&#39;: 20, &#39;omL&#39;: 5, &#39;imS&#39;: 2, &#39;imL&#39;: 2})
+Kelas im: jumlah=77, menggunakan n_neighbors=5
+Kelas pp: jumlah=52, menggunakan n_neighbors=5
+Kelas imU: jumlah=35, menggunakan n_neighbors=5
+Kelas imS: jumlah=2, menggunakan n_neighbors=1
+Kelas om: jumlah=20, menggunakan n_neighbors=5
+Kelas imL: jumlah=2, menggunakan n_neighbors=1
+Kelas omL: jumlah=5, menggunakan n_neighbors=4
+Sesudah ADASYN: Counter({&#39;im&#39;: 156, &#39;pp&#39;: 150, &#39;cp&#39;: 143, &#39;imU&#39;: 143, &#39;om&#39;: 143, &#39;omL&#39;: 143, &#39;imS&#39;: 142, &#39;imL&#39;: 142})
+</pre></div>
+</div>
+</div>
+</div>
+<section id="grafik-batang-persebaran-data-balancing-adasyn">
+<h3>Grafik Batang Persebaran Data Balancing ADASYN<a class="headerlink" href="#grafik-batang-persebaran-data-balancing-adasyn" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Data sebelum smote</span>
+<span class="n">data_sebelum_ASD</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="n">sorted_items</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">data_sebelum_ASD</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">label_ASD</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">sorted_items</span><span class="p">]</span>
+<span class="n">jumlah_sebelum_ASD</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">sorted_items</span><span class="p">]</span>
+
+<span class="c1"># Membuat grafik batang</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">label_ASD</span><span class="p">,</span> <span class="n">jumlah_sebelum_ASD</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+
+<span class="c1"># Menambahkan label angka di atas batang</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">jumlah_sebelum_ASD</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">val</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">val</span><span class="p">),</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">)</span>
+
+<span class="c1"># Judul dan label sumbu</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Grafik Bar Data E-Coli Sebelum ADASYN&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Class&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Jumlah&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Data Setelah SMOTE</span>
+<span class="n">data_setelah_asd</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">y_res_adasyn</span><span class="p">)</span>
+<span class="n">sorted_items_after_asd</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">data_setelah_asd</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">label_ASD</span> <span class="o">=</span> <span class="p">[</span><span class="n">item_res</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">item_res</span> <span class="ow">in</span> <span class="n">sorted_items_after_asd</span><span class="p">]</span>
+<span class="n">jumlah_setelah_asd</span> <span class="o">=</span> <span class="p">[</span><span class="n">item_res</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">item_res</span> <span class="ow">in</span> <span class="n">sorted_items_after_asd</span><span class="p">]</span>
+
+<span class="c1"># Membuat grafik batang</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">label_ASD</span><span class="p">,</span> <span class="n">jumlah_setelah_asd</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;purple&#39;</span><span class="p">)</span>
+
+<span class="c1"># Menambahkan label angka di atas batang</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">jumlah_setelah_asd</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">val</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">val</span><span class="p">),</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">)</span>
+
+<span class="c1"># Judul dan label sumbu</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Grafik Bar Data E-Coli Setelah ADASYN&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Class&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Jumlah&quot;</span><span class="p">)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/0346e41675c3bad3ccdd77f581680ee5300f8db282892d2f04a27949fec92038.png" src="_images/0346e41675c3bad3ccdd77f581680ee5300f8db282892d2f04a27949fec92038.png" />
+<img alt="_images/d25100ec71199b91d9c554761e6273061efd40f453bb02f7130d33d0b5e036ab.png" src="_images/d25100ec71199b91d9c554761e6273061efd40f453bb02f7130d33d0b5e036ab.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="ploting-data-setelah-proses-smote-menggunakan-pca">
+<h2>Ploting Data Setelah Proses SMOTE menggunakan PCA<a class="headerlink" href="#ploting-data-setelah-proses-smote-menggunakan-pca" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_asli</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">n_baru</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">X_resampling</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Jumlah data asli:&quot;</span><span class="p">,</span> <span class="n">n_asli</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Jumlah data setelah SMOTE:&quot;</span><span class="p">,</span> <span class="n">n_baru</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Jumlah data hasil generate:&quot;</span><span class="p">,</span> <span class="n">n_baru</span> <span class="o">-</span> <span class="n">n_asli</span><span class="p">)</span>
+
+
+<span class="c1"># PCA ke 2 dimensi</span>
+<span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">X_pca</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_resampling</span><span class="p">)</span>
+
+<span class="c1"># ubah ke dataframe</span>
+<span class="n">df_pca</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X_pca</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;PC1&quot;</span><span class="p">,</span> <span class="s2">&quot;PC2&quot;</span><span class="p">])</span>
+<span class="n">df_pca</span><span class="p">[</span><span class="s2">&quot;class&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">y_resampling</span>
+
+<span class="c1"># tambahkan flag: asli / baru</span>
+<span class="n">df_pca</span><span class="p">[</span><span class="s2">&quot;source&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;original&quot;</span>
+<span class="n">df_pca</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">n_asli</span><span class="p">:,</span> <span class="s2">&quot;source&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;baru&quot;</span>
+
+<span class="c1"># plotting</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;navy&quot;</span><span class="p">,</span> <span class="s2">&quot;turquoise&quot;</span><span class="p">,</span> <span class="s2">&quot;darkorange&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;purple&quot;</span><span class="p">,</span> <span class="s2">&quot;brown&quot;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">color</span><span class="p">,</span> <span class="n">target_name</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">colors</span><span class="p">,</span> <span class="n">df_pca</span><span class="p">[</span><span class="s2">&quot;class&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()):</span>
+    <span class="n">subset</span> <span class="o">=</span> <span class="n">df_pca</span><span class="p">[</span><span class="n">df_pca</span><span class="p">[</span><span class="s2">&quot;class&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">target_name</span><span class="p">]</span>
+
+    <span class="c1"># plot data asli</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">subset</span><span class="p">[</span><span class="n">subset</span><span class="p">[</span><span class="s2">&quot;source&quot;</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;original&quot;</span><span class="p">][</span><span class="s2">&quot;PC1&quot;</span><span class="p">],</span>
+                <span class="n">subset</span><span class="p">[</span><span class="n">subset</span><span class="p">[</span><span class="s2">&quot;source&quot;</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;original&quot;</span><span class="p">][</span><span class="s2">&quot;PC2&quot;</span><span class="p">],</span>
+                <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">target_name</span><span class="si">}</span><span class="s2"> (ori)&quot;</span><span class="p">)</span>
+
+    <span class="c1"># plot data baru</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">subset</span><span class="p">[</span><span class="n">subset</span><span class="p">[</span><span class="s2">&quot;source&quot;</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;baru&quot;</span><span class="p">][</span><span class="s2">&quot;PC1&quot;</span><span class="p">],</span>
+                <span class="n">subset</span><span class="p">[</span><span class="n">subset</span><span class="p">[</span><span class="s2">&quot;source&quot;</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;baru&quot;</span><span class="p">][</span><span class="s2">&quot;PC2&quot;</span><span class="p">],</span>
+                <span class="n">alpha</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">target_name</span><span class="si">}</span><span class="s2"> (baru)&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;best&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;PCA of SMOTE-balanced data&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;PC1&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;PC2&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jumlah data asli: 336
+Jumlah data setelah SMOTE: 1144
+Jumlah data hasil generate: 808
+</pre></div>
+</div>
+<img alt="_images/a6d8609ad3b77206ac4c8b7cdef5f733ea1e2b4740b46652a6836e049cea9c02.png" src="_images/a6d8609ad3b77206ac4c8b7cdef5f733ea1e2b4740b46652a6836e049cea9c02.png" />
+</div>
+</div>
+</section>
+<section id="ploting-data-setelah-proses-adasyn-menggunakan-pca">
+<h2>Ploting Data Setelah Proses ADASYN menggunakan PCA<a class="headerlink" href="#ploting-data-setelah-proses-adasyn-menggunakan-pca" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_asli</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">n_baru</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">X_res_adasyn</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Jumlah data asli:&quot;</span><span class="p">,</span> <span class="n">n_asli</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Jumlah data setelah ADASYN:&quot;</span><span class="p">,</span> <span class="n">n_baru</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Jumlah data hasil generate:&quot;</span><span class="p">,</span> <span class="n">n_baru</span> <span class="o">-</span> <span class="n">n_asli</span><span class="p">)</span>
+
+
+<span class="c1"># PCA ke 2 dimensi</span>
+<span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">X_pca</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_res_adasyn</span><span class="p">)</span>
+
+<span class="c1"># ubah ke dataframe</span>
+<span class="n">df_pca</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X_pca</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;PC1&quot;</span><span class="p">,</span> <span class="s2">&quot;PC2&quot;</span><span class="p">])</span>
+<span class="n">df_pca</span><span class="p">[</span><span class="s2">&quot;class&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">y_res_adasyn</span>
+
+<span class="c1"># tambahkan flag: asli / baru</span>
+<span class="n">df_pca</span><span class="p">[</span><span class="s2">&quot;source&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;original&quot;</span>
+<span class="n">df_pca</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">n_asli</span><span class="p">:,</span> <span class="s2">&quot;source&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;baru&quot;</span>
+
+<span class="c1"># plotting</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;navy&quot;</span><span class="p">,</span> <span class="s2">&quot;turquoise&quot;</span><span class="p">,</span> <span class="s2">&quot;darkorange&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;purple&quot;</span><span class="p">,</span> <span class="s2">&quot;brown&quot;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">color</span><span class="p">,</span> <span class="n">target_name</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">colors</span><span class="p">,</span> <span class="n">df_pca</span><span class="p">[</span><span class="s2">&quot;class&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()):</span>
+    <span class="n">subset</span> <span class="o">=</span> <span class="n">df_pca</span><span class="p">[</span><span class="n">df_pca</span><span class="p">[</span><span class="s2">&quot;class&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">target_name</span><span class="p">]</span>
+
+    <span class="c1"># plot data asli</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">subset</span><span class="p">[</span><span class="n">subset</span><span class="p">[</span><span class="s2">&quot;source&quot;</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;original&quot;</span><span class="p">][</span><span class="s2">&quot;PC1&quot;</span><span class="p">],</span>
+                <span class="n">subset</span><span class="p">[</span><span class="n">subset</span><span class="p">[</span><span class="s2">&quot;source&quot;</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;original&quot;</span><span class="p">][</span><span class="s2">&quot;PC2&quot;</span><span class="p">],</span>
+                <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">target_name</span><span class="si">}</span><span class="s2"> (ori)&quot;</span><span class="p">)</span>
+
+    <span class="c1"># plot data baru</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">subset</span><span class="p">[</span><span class="n">subset</span><span class="p">[</span><span class="s2">&quot;source&quot;</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;baru&quot;</span><span class="p">][</span><span class="s2">&quot;PC1&quot;</span><span class="p">],</span>
+                <span class="n">subset</span><span class="p">[</span><span class="n">subset</span><span class="p">[</span><span class="s2">&quot;source&quot;</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;baru&quot;</span><span class="p">][</span><span class="s2">&quot;PC2&quot;</span><span class="p">],</span>
+                <span class="n">alpha</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">target_name</span><span class="si">}</span><span class="s2"> (baru)&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;best&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;PCA of ADASYN-balanced data&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;PC1&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;PC2&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jumlah data asli: 336
+Jumlah data setelah ADASYN: 1162
+Jumlah data hasil generate: 826
+</pre></div>
+</div>
+<img alt="_images/25a61af341f00174d6623628e3f1172283a2192d773918e279fbdb8f3f1665ad.png" src="_images/25a61af341f00174d6623628e3f1172283a2192d773918e279fbdb8f3f1665ad.png" />
+</div>
+</div>
+</section>
+<section id="klasifikasi-menggunakan-naive-bayes">
+<h2>Klasifikasi Menggunakan Naive Bayes<a class="headerlink" href="#klasifikasi-menggunakan-naive-bayes" title="Link to this heading">#</a></h2>
+<p><strong>Naive Bayes</strong> adalah salah satu metode klasifikasi yang sederhana namun sangat efektif dalam dunia pembelajaran mesin (machine learning). Metode ini bekerja berdasarkan prinsip probabilitas, khususnya Teorema Bayes, yang digunakan untuk memperkirakan kemungkinan suatu data termasuk ke dalam sebuah kelas tertentu.</p>
+<p>Ciri khas dari metode ini adalah anggapan bahwa setiap fitur (atau atribut) pada data bersifat saling independen, artinya kemunculan satu fitur tidak dipengaruhi oleh fitur lainnya. Meskipun anggapan ini sering kali tidak sepenuhnya benar dalam kenyataan, pendekatan “naive” ini justru membuat perhitungan menjadi lebih sederhana dan efisien, serta tetap menghasilkan performa yang kompetitif dalam banyak kasus.</p>
+<p>Teorema Bayes:</p>
+<div class="math notranslate nohighlight">
+\[
+P(C \mid X) = \frac{P(X \mid C) \cdot P(C)}{P(X)}
+\]</div>
+<p>Keterangan:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(( P(C \mid X) \)</span>): <strong>Posterior</strong> – probabilitas kelas <span class="math notranslate nohighlight">\(( C \)</span>) diberikan data <span class="math notranslate nohighlight">\(( X \)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(( P(X \mid C) \)</span>): <strong>Likelihood</strong> – probabilitas data <span class="math notranslate nohighlight">\(( X \)</span>) muncul jika kelasnya ( C )</p></li>
+<li><p><span class="math notranslate nohighlight">\(( P(C) \)</span>): <strong>Prior</strong> – probabilitas awal kelas <span class="math notranslate nohighlight">\(( C \)</span>) sebelum melihat data</p></li>
+<li><p><span class="math notranslate nohighlight">\(( P(X) \)</span>): Probabilitas keseluruhan data <span class="math notranslate nohighlight">\(( X \)</span>) (konstanta untuk semua kelas)</p></li>
+</ul>
+<p>Langkah - Langkah Pada Modelling:</p>
+<ol class="arabic simple">
+<li><p>Pada saat Training Model akan membagi dataset menjadi dua bagian yakni 30% datset yang digunakan untuk testing dan 70% data digunakan untuk training.</p></li>
+<li><p>Menghitung Probabilitas Awal</p></li>
+<li><p>Menghitung Persebaran data / Standar Deviasi.</p></li>
+<li><p>Menghitung Distribusi Gaussian.</p></li>
+<li><p>Menghitung Posterior.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Library yang digunakan</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">accuracy_score</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.naive_bayes</span><span class="w"> </span><span class="kn">import</span> <span class="n">GaussianNB</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="data-ecoli-asli-sebelum-mendapatkan-balancing">
+<h3>Data Ecoli Asli (Sebelum mendapatkan Balancing)<a class="headerlink" href="#data-ecoli-asli-sebelum-mendapatkan-balancing" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># split data</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="c1"># instance model</span>
+<span class="n">gnb</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
+<span class="c1"># train data</span>
+<span class="n">train_gnb</span> <span class="o">=</span> <span class="n">gnb</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="c1"># predict data</span>
+<span class="n">y_pred_gnb</span> <span class="o">=</span> <span class="n">gnb</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="c1"># hitung akurasi</span>
+<span class="n">acc_gnb</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_gnb</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;nilai akurasi sebelum balancing : </span><span class="si">{</span><span class="n">acc_gnb</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nilai akurasi sebelum balancing : 0.80
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="data-ecoli-asli-setelah-mendapatkan-balancing-smote">
+<h3>Data Ecoli Asli (Setelah mendapatkan Balancing SMOTE)<a class="headerlink" href="#data-ecoli-asli-setelah-mendapatkan-balancing-smote" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># split data</span>
+<span class="n">X_train_smote</span><span class="p">,</span> <span class="n">X_test_smote</span><span class="p">,</span> <span class="n">y_train_smote</span><span class="p">,</span> <span class="n">y_test_smote</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_resampling</span><span class="p">,</span> <span class="n">y_resampling</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="c1"># instance model</span>
+<span class="n">gnb_smote</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
+<span class="c1"># train data</span>
+<span class="n">train_gnb_smote</span> <span class="o">=</span> <span class="n">gnb_smote</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_smote</span><span class="p">,</span> <span class="n">y_train_smote</span><span class="p">)</span>
+<span class="c1"># predict data</span>
+<span class="n">y_pred_gnb_smote</span> <span class="o">=</span> <span class="n">gnb_smote</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_smote</span><span class="p">)</span>
+<span class="c1"># hitung akurasi</span>
+<span class="n">acc_gnb_smote</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test_smote</span><span class="p">,</span> <span class="n">y_pred_gnb_smote</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;nilai akurasi setelah balancing SMOTE : </span><span class="si">{</span><span class="n">acc_gnb_smote</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nilai akurasi setelah balancing SMOTE : 0.85
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="data-ecoli-asli-setelah-mendapatkan-balancing-adasyn">
+<h3>Data Ecoli Asli (Setelah mendapatkan Balancing ADASYN)<a class="headerlink" href="#data-ecoli-asli-setelah-mendapatkan-balancing-adasyn" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># split data</span>
+<span class="n">X_train_ads</span><span class="p">,</span> <span class="n">X_test_ads</span><span class="p">,</span> <span class="n">y_train_ads</span><span class="p">,</span> <span class="n">y_test_ads</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_res_adasyn</span><span class="p">,</span> <span class="n">y_res_adasyn</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="c1"># instance model</span>
+<span class="n">gnb_asdasyn</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
+<span class="c1"># train data</span>
+<span class="n">train_gnb_asd</span> <span class="o">=</span> <span class="n">gnb_asdasyn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_ads</span><span class="p">,</span> <span class="n">y_train_ads</span><span class="p">)</span>
+<span class="c1"># predict data</span>
+<span class="n">y_pred_gnb_ads</span> <span class="o">=</span> <span class="n">gnb_asdasyn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_ads</span><span class="p">)</span>
+<span class="c1"># hitung akurasi</span>
+<span class="n">acc_gnb_ads</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test_ads</span><span class="p">,</span> <span class="n">y_pred_gnb_ads</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;nilai akurasi setelah balancing ADASYN : </span><span class="si">{</span><span class="n">acc_gnb_ads</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nilai akurasi setelah balancing ADASYN : 0.78
+</pre></div>
+</div>
+</div>
+</div>
+<p>Berdasarkan hasil percobaan pembuatan model klasifikasi menggunakan Gaussian Naive Bayes dari ketiga data yakni data asli sebelum proses balancing, data setelah balancing menggunakan SMOTE, dan data setelah Balancing menggunakan ADASYN diperoleh hasil akurasi seperti berikut:</p>
+<ul class="simple">
+<li><p>Naive Bayes Data Asli : 80%</p></li>
+<li><p>Naive Bayes Data Balancing SMOTE : 85%</p></li>
+<li><p>Naive Bayes Data Balancing ADASYN : 78%</p></li>
+</ul>
+<p>Dapat disimpulkan bahwa klasifikasi menggunakan Gaussian Naive Bayes pada data Balancing menggunakan SMOTE cenderung lebih baik dalam pengklasifikasian data yakni sebesar 80%.</p>
+</section>
+</section>
+<section id="klasifikasi-menggunakan-random-forest">
+<h2>Klasifikasi Menggunakan Random Forest<a class="headerlink" href="#klasifikasi-menggunakan-random-forest" title="Link to this heading">#</a></h2>
+<p><strong>Random Forest Classifier</strong> adalah sebuah metode klasifikasi yang bekerja dengan menggabungkan banyak pohon keputusan. Setiap pohon dibangun dari potongan data yang berbeda, lalu masing-masing pohon memberikan prediksi terhadap suatu sampel. Prediksi akhir ditentukan berdasarkan hasil voting dari semua pohon, sehingga kelas yang paling banyak dipilih menjadi keputusan model.</p>
+<p>Karena mengandalkan banyak pohon sekaligus, Random Forest lebih stabil dan akurat dibanding hanya menggunakan satu pohon keputusan saja. Metode ini mampu mengurangi risiko overfitting, menangani data dengan banyak fitur, serta memberikan informasi mengenai fitur mana yang paling berpengaruh dalam proses klasifikasi. Namun, di sisi lain, Random Forest cenderung lebih lambat dalam pelatihan dan sulit untuk diinterpretasikan karena kompleksitasnya yang tinggi.</p>
+<hr class="docutils" />
+<p><strong>Rumus Dasar Voting</strong></p>
+<p>Jika terdapat <span class="math notranslate nohighlight">\(( B \)</span>) pohon keputusan <span class="math notranslate nohighlight">\(( h_b(x) \)</span>), maka prediksi akhir adalah:</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{y} = \mathrm{mode}\{h_1(x), h_2(x), \dots, h_B(x)\}
+\]</div>
+<p>Keterangan:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(( h_b(x) \)</span>): prediksi pohon ke-<span class="math notranslate nohighlight">\(( b \)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(( B \)</span>): jumlah total pohon</p></li>
+<li><p><span class="math notranslate nohighlight">\(( \hat{y} \)</span>): hasil akhir (kelas mayoritas)</p></li>
+</ul>
+<hr class="docutils" />
+<p><strong>Kriteria Pemisahan (Impurity Measure)</strong></p>
+<p>Untuk memilih split terbaik, digunakan ukuran ketidakmurnian (impurity). Dua yang paling umum:</p>
+<ol class="arabic simple">
+<li><p><strong>Gini Index</strong></p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+Gini(S) = 1 - \sum_{k=1}^{K} p_k^2
+\]</div>
+<ol class="arabic simple" start="2">
+<li><p><strong>Entropy</strong></p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+Entropy(S) = - \sum_{k=1}^{K} p_k \log_2(p_k)
+\]</div>
+<p>dengan <span class="math notranslate nohighlight">\(( p_k \)</span>) adalah proporsi kelas <span class="math notranslate nohighlight">\(( k \)</span>) dalam node <span class="math notranslate nohighlight">\(( S \)</span>).</p>
+<hr class="docutils" />
+<p><strong>Langkah - Langkah Pada Modelling:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Membagi Dataset</strong><br />
+Biasanya dataset dibagi menjadi 70% untuk <em>training</em> dan 30% untuk <em>testing</em>.</p></li>
+<li><p><strong>Bootstrap Sampling</strong><br />
+Dari data <em>training</em>, dibuat beberapa subset data dengan pengambilan acak <strong>dengan pengembalian</strong>.</p></li>
+<li><p><strong>Bangun Pohon Keputusan</strong><br />
+Setiap subset data digunakan untuk membangun satu <em>Decision Tree</em>, dengan pemilihan fitur secara acak di tiap node.</p></li>
+<li><p><strong>Lakukan Prediksi Voting</strong><br />
+Masing-masing pohon memberikan prediksi, lalu hasil akhir ditentukan dengan <strong>mayoritas suara</strong> (<em>majority vote</em>).</p></li>
+<li><p><strong>Evaluasi Model</strong><br />
+Bandingkan prediksi <span class="math notranslate nohighlight">\((\hat{y}\)</span>) dengan label sebenarnya menggunakan metrik evaluasi (misalnya <em>accuracy</em>).</p></li>
+</ol>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># library yang digunakan</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">accuracy_score</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="id1">
+<h3>Data Ecoli Asli (Sebelum mendapatkan Balancing)<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># split data (train &amp; test)</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># buat model Random Forest</span>
+<span class="n">rf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span>
+    <span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+    <span class="n">max_depth</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span>
+<span class="p">)</span>
+
+<span class="c1"># train data</span>
+<span class="n">rf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># predict data</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="c1"># hitung akurasi</span>
+<span class="n">acc_rf</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;nilai akurasi sebelum balancing: </span><span class="si">{</span><span class="n">acc_rf</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nilai akurasi sebelum balancing: 0.87
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id2">
+<h3>Data Ecoli Asli (Setelah mendapatkan Balancing SMOTE)<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># split data (train &amp; test)</span>
+<span class="n">X_train_rf_smote</span><span class="p">,</span> <span class="n">X_test_rf_smote</span><span class="p">,</span> <span class="n">y_train_rf_smote</span><span class="p">,</span> <span class="n">y_test_rf_smote</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_resampling</span><span class="p">,</span> <span class="n">y_resampling</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># buat model Random Forest</span>
+<span class="n">rf_smote</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span>
+    <span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+    <span class="n">max_depth</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span>
+<span class="p">)</span>
+
+<span class="c1"># train data</span>
+<span class="n">rf_smote</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_rf_smote</span><span class="p">,</span> <span class="n">y_train_rf_smote</span><span class="p">)</span>
+
+<span class="c1"># predict data</span>
+<span class="n">y_pred_rf_smote</span> <span class="o">=</span> <span class="n">rf_smote</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_rf_smote</span><span class="p">)</span>
+
+<span class="c1"># hitung akurasi</span>
+<span class="n">acc_rf_smote</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test_rf_smote</span><span class="p">,</span> <span class="n">y_pred_rf_smote</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;nilai akurasi sebelum balancing: </span><span class="si">{</span><span class="n">acc_rf_smote</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nilai akurasi sebelum balancing: 0.95
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id3">
+<h3>Data Ecoli Asli (Setelah mendapatkan Balancing ADASYN)<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># split data (train &amp; test)</span>
+<span class="n">X_train_rf_ads</span><span class="p">,</span> <span class="n">X_test_rf_ads</span><span class="p">,</span> <span class="n">y_train_rf_ads</span><span class="p">,</span> <span class="n">y_test_rf_ads</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_res_adasyn</span><span class="p">,</span> <span class="n">y_res_adasyn</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># buat model Random Forest</span>
+<span class="n">rf_adasyn</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span>
+    <span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+    <span class="n">max_depth</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span>
+<span class="p">)</span>
+
+<span class="c1"># train data</span>
+<span class="n">rf_adasyn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_rf_ads</span><span class="p">,</span> <span class="n">y_train_rf_ads</span><span class="p">)</span>
+
+<span class="c1"># predict data</span>
+<span class="n">y_pred_rf_adasyn</span> <span class="o">=</span> <span class="n">rf_adasyn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_rf_ads</span><span class="p">)</span>
+
+<span class="c1"># hitung akurasi</span>
+<span class="n">acc_rf_adasyn</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test_rf_ads</span><span class="p">,</span> <span class="n">y_pred_rf_adasyn</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;nilai akurasi sebelum balancing: </span><span class="si">{</span><span class="n">acc_rf_adasyn</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nilai akurasi sebelum balancing: 0.93
+</pre></div>
+</div>
+</div>
+</div>
+<p>Berdasarkan hasil percobaan pembuatan model klasifikasi menggunakan Random Forest dari ketiga data yakni data asli sebelum proses balancing, data setelah balancing menggunakan SMOTE, dan data setelah Balancing menggunakan ADASYN diperoleh hasil akurasi seperti berikut:</p>
+<ul class="simple">
+<li><p>Naive Bayes Data Asli : 87%</p></li>
+<li><p>Naive Bayes Data Balancing SMOTE : 95%</p></li>
+<li><p>Naive Bayes Data Balancing ADASYN : 93%</p></li>
+</ul>
+<p>Dapat disimpulkan bahwa klasifikasi menggunakan Random Forest pada data Balancing menggunakan SMOTE cenderung lebih baik dalam pengklasifikasian data yakni sebesar 95%.</p>
+</section>
+</section>
+<section id="bagging-classifier">
+<h2>Bagging Classifier<a class="headerlink" href="#bagging-classifier" title="Link to this heading">#</a></h2>
+<p>Bagging Classifier merupakan meta estimator ansambel yang cara kerjanya menempatkan pengklasifikasian model dasar pada subset yang acak dari dataset asli, kemudian menggabungkan prediksi individualnya (baik melalui pemungutan suara maupun dengan merata-ratakan) untuk membentuk prediksi akhir. Meta Estimator seperti ini biasanya digunakan sebagai suatu cara untuk mengurangi varian estimator kotak hitam dengan cara memasukkan pengacakan melalui prosedir konstruksi dan menjadikannya sebuah ansambel.</p>
+<section id="bagging-classifier-menggunakan-model-naive-bayes">
+<h3>Bagging Classifier Menggunakan Model Naive Bayes<a class="headerlink" href="#bagging-classifier-menggunakan-model-naive-bayes" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Library yanag digunakan</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.naive_bayes</span><span class="w"> </span><span class="kn">import</span> <span class="n">GaussianNB</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">accuracy_score</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaggingClassifier</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="bagging-classifier-naive-bayes-pada-data-hasil-balanced-smote">
+<h4>Bagging Classifier Naive Bayes pada Data Hasil Balanced SMOTE<a class="headerlink" href="#bagging-classifier-naive-bayes-pada-data-hasil-balanced-smote" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># split data training dan testing</span>
+<span class="n">X_train_ensamble_bg</span><span class="p">,</span> <span class="n">X_test_ensamble_bg</span><span class="p">,</span> <span class="n">y_train_ensamble_bg</span><span class="p">,</span> <span class="n">y_test_ensamble_bg</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_resampling</span><span class="p">,</span> <span class="n">y_resampling</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="c1"># instance model</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">BaggingClassifier</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="n">GaussianNB</span><span class="p">(),</span>
+                        <span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_ensamble_bg</span><span class="p">,</span> <span class="n">y_train_ensamble_bg</span><span class="p">)</span>
+<span class="c1"># prediksi hasil klasifikasi</span>
+<span class="n">predict_ensamble_smote</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_ensamble_bg</span><span class="p">)</span>
+
+<span class="c1"># perhitungan nilai akurasi</span>
+<span class="n">acc_ensamble_smote</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test_ensamble_bg</span><span class="p">,</span> <span class="n">predict_ensamble_smote</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;hasil akurasi setelah proses ensamble: </span><span class="si">{</span><span class="n">acc_ensamble_smote</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>hasil akurasi setelah proses ensamble: 0.86
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="bagging-classifier-naive-bayes-pada-data-hasil-balanced-adasyn">
+<h4>Bagging Classifier Naive Bayes pada Data Hasil Balanced ADASYN<a class="headerlink" href="#bagging-classifier-naive-bayes-pada-data-hasil-balanced-adasyn" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># split data training dan testing</span>
+<span class="n">X_train_bg_ads</span><span class="p">,</span> <span class="n">X_test_bg_ads</span><span class="p">,</span> <span class="n">y_train_bg_ads</span><span class="p">,</span> <span class="n">y_test_bg_ads</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_res_adasyn</span><span class="p">,</span> <span class="n">y_res_adasyn</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="c1"># instance model</span>
+<span class="n">clf_adasyn</span> <span class="o">=</span> <span class="n">BaggingClassifier</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="n">GaussianNB</span><span class="p">(),</span>
+                        <span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_bg_ads</span><span class="p">,</span> <span class="n">y_train_bg_ads</span><span class="p">)</span>
+<span class="c1"># prediksi hasil klasifikasi</span>
+<span class="n">predict_ensamble_ads</span> <span class="o">=</span> <span class="n">clf_adasyn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_bg_ads</span><span class="p">)</span>
+
+<span class="c1"># perhitungan nilai akurasi</span>
+<span class="n">acc_ensamble_ads</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test_bg_ads</span><span class="p">,</span> <span class="n">predict_ensamble_ads</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;hasil akurasi setelah proses ensamble: </span><span class="si">{</span><span class="n">acc_ensamble_ads</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>hasil akurasi setelah proses ensamble: 0.78
+</pre></div>
+</div>
+</div>
+</div>
+<p>Berdasarkan hasil proses traing menggunakan model Bagging Classifier Naive Bayes pada data hasil balancing menggunakan metode SMOTE dan ADASYN menunjukkan nilai akurasi yang cukup tinggi. Berikut hasil akurasi setiap data balancing SMOTE dan ADSYN:</p>
+<ul class="simple">
+<li><p>Akurasi Bagging pada data Balancing SMOTE : 86%</p></li>
+<li><p>Akurasi Bagging pada data Balancing SMOTE : 78%</p></li>
+</ul>
+<p>Dapat disimpulkan bahwa balancing menggunakan SMOTE memiliki nilai akurasi yang lebih tinggi dari ADSYN dengan menggunakan metode klasifikasi Bagging Naive Bayes.</p>
+</section>
+</section>
+<section id="bagging-classifier-menggunakan-model-random-forest">
+<h3>Bagging Classifier Menggunakan Model Random Forest<a class="headerlink" href="#bagging-classifier-menggunakan-model-random-forest" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Library yang dibutuhkan</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">accuracy_score</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaggingClassifier</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="bagging-classifier-random-forest-pada-data-hasil-balanced-smote">
+<h4>Bagging Classifier Random Forest pada Data Hasil Balanced SMOTE<a class="headerlink" href="#bagging-classifier-random-forest-pada-data-hasil-balanced-smote" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># split data training dan testing</span>
+<span class="n">X_train_ensemble_rf</span><span class="p">,</span> <span class="n">X_test_ensemble_rf</span><span class="p">,</span> <span class="n">y_train_ensemble_rf</span><span class="p">,</span> <span class="n">y_test_ensemble_rf</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_resampling</span><span class="p">,</span> <span class="n">y_resampling</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="c1"># instance model</span>
+<span class="n">clf_rf_bg_smote</span> <span class="o">=</span> <span class="n">BaggingClassifier</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="n">RandomForestClassifier</span><span class="p">(),</span>
+                        <span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_ensemble_rf</span><span class="p">,</span> <span class="n">y_train_ensemble_rf</span><span class="p">)</span>
+<span class="c1"># prediksi hasil klasifikasi</span>
+<span class="n">predict_rf_bg</span> <span class="o">=</span> <span class="n">clf_rf_bg_smote</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_ensemble_rf</span><span class="p">)</span>
+
+<span class="c1"># perhitungan nilai akurasi</span>
+<span class="n">acc_ensamble_rf_smote</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test_ensemble_rf</span><span class="p">,</span> <span class="n">predict_rf_bg</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;hasil akurasi setelah proses ensamble: </span><span class="si">{</span><span class="n">acc_ensamble_rf_smote</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>hasil akurasi setelah proses ensamble: 0.97
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="bagging-classifier-random-forest-pada-data-hasil-balanced-adasyn">
+<h4>Bagging Classifier Random Forest pada Data Hasil Balanced ADASYN<a class="headerlink" href="#bagging-classifier-random-forest-pada-data-hasil-balanced-adasyn" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># split data training dan testing</span>
+<span class="n">X_train_ensemble_rf_ads</span><span class="p">,</span> <span class="n">X_test_ensemble_rf_ads</span><span class="p">,</span> <span class="n">y_train_ensemble_rf_ads</span><span class="p">,</span> <span class="n">y_test_ensemble_rf_ads</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_res_adasyn</span><span class="p">,</span> <span class="n">y_res_adasyn</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="c1"># instance model</span>
+<span class="n">clf_rf_bg_adasyn</span> <span class="o">=</span> <span class="n">BaggingClassifier</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="n">RandomForestClassifier</span><span class="p">(),</span>
+                        <span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_ensemble_rf_ads</span><span class="p">,</span> <span class="n">y_train_ensemble_rf_ads</span><span class="p">)</span>
+<span class="c1"># prediksi hasil klasifikasi</span>
+<span class="n">predict_rf_bg_ads</span> <span class="o">=</span> <span class="n">clf_rf_bg_adasyn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_ensemble_rf_ads</span><span class="p">)</span>
+
+<span class="c1"># perhitungan nilai akurasi</span>
+<span class="n">acc_ensamble_rf_adasyn</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test_ensemble_rf_ads</span><span class="p">,</span> <span class="n">predict_rf_bg_ads</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;hasil akurasi setelah proses ensamble: </span><span class="si">{</span><span class="n">acc_ensamble_rf_adasyn</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>hasil akurasi setelah proses ensamble: 0.95
+</pre></div>
+</div>
+</div>
+</div>
+<p>Berdasarkan hasil proses traing menggunakan model Bagging Classifier Random Forest pada data hasil balancing menggunakan metode SMOTE dan ADASYN menunjukkan nilai akurasi yang cukup tinggi. Berikut hasil akurasi setiap data balancing SMOTE dan ADSYN:</p>
+<ul class="simple">
+<li><p>Akurasi Bagging pada data Balancing SMOTE : 97%</p></li>
+<li><p>Akurasi Bagging pada data Balancing SMOTE : 95%</p></li>
+</ul>
+<p>Dapat disimpulkan bahwa balancing menggunakan SMOTE memiliki nilai akurasi yang lebih tinggi dari ADSYN dengan menggunakan metode klasifikasi Bagging Random Forest.</p>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Imbalanced%20Data.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Imbalanced Data</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Analisis%20Data%20KNIME.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Analisis Data Menggunakan Tools KNIME</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-library-yang-digunakan">Install library yang digunakan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengambil-data-e-coli-dalam-database-mysql">Mengambil Data E-Coli dalam Database Mysql</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transformasi-data-dalam-bentuk-2-dimensi-menggunakan-pca">Transformasi Data dalam Bentuk 2 Dimensi menggunakan PCA</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cara-mengetahui-total-data-dalam-setiap-class">Cara Mengetahui Total data dalam Setiap CLass</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#balancing-data-menggunakan-smote">Balancing data menggunakan SMOTE</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grafik-batang-persebaran-data-balancing-smote">Grafik Batang Persebaran Data Balancing SMOTE</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#balancing-data-menggunakan-adasyn">Balancing Data menggunakan ADASYN</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grafik-batang-persebaran-data-balancing-adasyn">Grafik Batang Persebaran Data Balancing ADASYN</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ploting-data-setelah-proses-smote-menggunakan-pca">Ploting Data Setelah Proses SMOTE menggunakan PCA</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ploting-data-setelah-proses-adasyn-menggunakan-pca">Ploting Data Setelah Proses ADASYN menggunakan PCA</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#klasifikasi-menggunakan-naive-bayes">Klasifikasi Menggunakan Naive Bayes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-ecoli-asli-sebelum-mendapatkan-balancing">Data Ecoli Asli (Sebelum mendapatkan Balancing)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-ecoli-asli-setelah-mendapatkan-balancing-smote">Data Ecoli Asli (Setelah mendapatkan Balancing SMOTE)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-ecoli-asli-setelah-mendapatkan-balancing-adasyn">Data Ecoli Asli (Setelah mendapatkan Balancing ADASYN)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#klasifikasi-menggunakan-random-forest">Klasifikasi Menggunakan Random Forest</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Data Ecoli Asli (Sebelum mendapatkan Balancing)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Data Ecoli Asli (Setelah mendapatkan Balancing SMOTE)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Data Ecoli Asli (Setelah mendapatkan Balancing ADASYN)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bagging-classifier">Bagging Classifier</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bagging-classifier-menggunakan-model-naive-bayes">Bagging Classifier Menggunakan Model Naive Bayes</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bagging-classifier-naive-bayes-pada-data-hasil-balanced-smote">Bagging Classifier Naive Bayes pada Data Hasil Balanced SMOTE</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bagging-classifier-naive-bayes-pada-data-hasil-balanced-adasyn">Bagging Classifier Naive Bayes pada Data Hasil Balanced ADASYN</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bagging-classifier-menggunakan-model-random-forest">Bagging Classifier Menggunakan Model Random Forest</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bagging-classifier-random-forest-pada-data-hasil-balanced-smote">Bagging Classifier Random Forest pada Data Hasil Balanced SMOTE</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bagging-classifier-random-forest-pada-data-hasil-balanced-adasyn">Bagging Classifier Random Forest pada Data Hasil Balanced ADASYN</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Muhammad Fathan Alizain
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
