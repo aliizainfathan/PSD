@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Voice Detection &#8212; My sample book</title>
+    <title>Voice Identification &#8212; My sample book</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -190,7 +190,7 @@
 <li class="toctree-l1"><a class="reference internal" href="Imbalanced%20Data%20dan%20Klasifikasi.html">Imbalanced Data dan Klasifikasi Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Analisis%20Data%20KNIME.html">Analisis Data Menggunakan Tools KNIME</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Peramalan_Kualitas_Polusi_NO2.html">Peramalan Kualitas Polusi NO2</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Voice Detection</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Voice Identification</a></li>
 </ul>
 
     </div>
@@ -376,7 +376,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Voice Detection</h1>
+    <h1>Voice Identification</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -401,7 +401,7 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-prepocessing">Data Prepocessing</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghapus-data-outlier">Menghapus data Outlier</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#seleksi-fitur-menggunakan-korelasi">Seleksi Fitur Menggunakan Korelasi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#seleksi-fitur-menggunakan-information-gain">Seleksi Fitur Menggunakan Information Gain</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mensortir-ke-data-utama-untuk-fitur-yang-digunakan">Mensortir ke Data Utama untuk fitur yang digunakan</a></li>
 </ul>
 </li>
@@ -431,8 +431,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="voice-detection">
-<h1>Voice Detection<a class="headerlink" href="#voice-detection" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="voice-identification">
+<h1>Voice Identification<a class="headerlink" href="#voice-identification" title="Link to this heading">#</a></h1>
 <section id="install-dan-import-library-yang-dibutuhkan">
 <h2>Install dan Import Library yang dibutuhkan<a class="headerlink" href="#install-dan-import-library-yang-dibutuhkan" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
@@ -790,7 +790,7 @@ Fitur tambahan yang menghitung perubahan atau pola sinyal.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-9efda56e-846c-4e08-9cd7-530e85ea1216" class="colab-df-container">
+  <div id="df-c7360d07-9f3e-4fc6-9fe5-5b4aecc5c97a" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -1104,7 +1104,7 @@ Fitur tambahan yang menghitung perubahan atau pola sinyal.</p>
     <div class="colab-df-buttons">
 
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-9efda56e-846c-4e08-9cd7-530e85ea1216')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-c7360d07-9f3e-4fc6-9fe5-5b4aecc5c97a')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
 
@@ -1156,12 +1156,12 @@ Fitur tambahan yang menghitung perubahan atau pola sinyal.</p>
 
     <script>
       const buttonEl =
-        document.querySelector('#df-9efda56e-846c-4e08-9cd7-530e85ea1216 button.colab-df-convert');
+        document.querySelector('#df-c7360d07-9f3e-4fc6-9fe5-5b4aecc5c97a button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-9efda56e-846c-4e08-9cd7-530e85ea1216');
+        const element = document.querySelector('#df-c7360d07-9f3e-4fc6-9fe5-5b4aecc5c97a');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -1181,8 +1181,8 @@ Fitur tambahan yang menghitung perubahan atau pola sinyal.</p>
   </div>
 
 
-    <div id="df-df15fb63-745c-4a00-ac78-77278fda5533">
-      <button class="colab-df-quickchart" onclick="quickchart('df-df15fb63-745c-4a00-ac78-77278fda5533')"
+    <div id="df-61d5aa83-92d6-4f93-a7e9-ef0f1489a670">
+      <button class="colab-df-quickchart" onclick="quickchart('df-61d5aa83-92d6-4f93-a7e9-ef0f1489a670')"
                 title="Suggest charts"
                 style="display:none;">
 
@@ -1301,14 +1301,14 @@ Fitur tambahan yang menghitung perubahan atau pola sinyal.</p>
         }
         (() => {
           let quickchartButtonEl =
-            document.querySelector('#df-df15fb63-745c-4a00-ac78-77278fda5533 button');
+            document.querySelector('#df-61d5aa83-92d6-4f93-a7e9-ef0f1489a670 button');
           quickchartButtonEl.style.display =
             google.colab.kernel.accessAllowed ? 'block' : 'none';
         })();
       </script>
     </div>
 
-  <div id="id_8c354a4d-2d3a-45dd-9da2-38e36047f722">
+  <div id="id_6929f8ca-32ed-415d-ad14-5ab86030b84d">
     <style>
       .colab-df-generate {
         background-color: #E8F0FE;
@@ -1352,7 +1352,7 @@ Fitur tambahan yang menghitung perubahan atau pola sinyal.</p>
     <script>
       (() => {
       const buttonEl =
-        document.querySelector('#id_8c354a4d-2d3a-45dd-9da2-38e36047f722 button.colab-df-generate');
+        document.querySelector('#id_6929f8ca-32ed-415d-ad14-5ab86030b84d button.colab-df-generate');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
@@ -1418,7 +1418,7 @@ Fitur tambahan yang menghitung perubahan atau pola sinyal.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e146a2b5f17e2dee91f1219d51fa6c95b36fa4b60b49ac9fa576ca3f3c011d1c.png" src="_images/e146a2b5f17e2dee91f1219d51fa6c95b36fa4b60b49ac9fa576ca3f3c011d1c.png" />
+<img alt="_images/a7346c3bc44e07e8645495d5cf598d205a8d247e9d5c2b6e1125384d2a3d173b.png" src="_images/a7346c3bc44e07e8645495d5cf598d205a8d247e9d5c2b6e1125384d2a3d173b.png" />
 </div>
 </div>
 </section>
@@ -1483,7 +1483,7 @@ Length: 158, dtype: object
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-494c9f05-e002-4c12-b4a9-d565254bb474" class="colab-df-container">
+  <div id="df-34d6fbe1-1fea-44b0-a7ff-3b49e60af781" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -1581,7 +1581,7 @@ Length: 158, dtype: object
     <div class="colab-df-buttons">
 
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-494c9f05-e002-4c12-b4a9-d565254bb474')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-34d6fbe1-1fea-44b0-a7ff-3b49e60af781')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
 
@@ -1633,12 +1633,12 @@ Length: 158, dtype: object
 
     <script>
       const buttonEl =
-        document.querySelector('#df-494c9f05-e002-4c12-b4a9-d565254bb474 button.colab-df-convert');
+        document.querySelector('#df-34d6fbe1-1fea-44b0-a7ff-3b49e60af781 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-494c9f05-e002-4c12-b4a9-d565254bb474');
+        const element = document.querySelector('#df-34d6fbe1-1fea-44b0-a7ff-3b49e60af781');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -1658,8 +1658,8 @@ Length: 158, dtype: object
   </div>
 
 
-    <div id="df-9d0946ce-ec89-4124-b95a-3c9cc133de02">
-      <button class="colab-df-quickchart" onclick="quickchart('df-9d0946ce-ec89-4124-b95a-3c9cc133de02')"
+    <div id="df-bc726c56-7e69-4c1c-8e4a-996b848a88ad">
+      <button class="colab-df-quickchart" onclick="quickchart('df-bc726c56-7e69-4c1c-8e4a-996b848a88ad')"
                 title="Suggest charts"
                 style="display:none;">
 
@@ -1778,14 +1778,14 @@ Length: 158, dtype: object
         }
         (() => {
           let quickchartButtonEl =
-            document.querySelector('#df-9d0946ce-ec89-4124-b95a-3c9cc133de02 button');
+            document.querySelector('#df-bc726c56-7e69-4c1c-8e4a-996b848a88ad button');
           quickchartButtonEl.style.display =
             google.colab.kernel.accessAllowed ? 'block' : 'none';
         })();
       </script>
     </div>
 
-  <div id="id_c1124854-6f97-4983-965f-86b824a6672e">
+  <div id="id_7d55fe4f-9696-428f-9b4c-b760775ec9ad">
     <style>
       .colab-df-generate {
         background-color: #E8F0FE;
@@ -1829,7 +1829,7 @@ Length: 158, dtype: object
     <script>
       (() => {
       const buttonEl =
-        document.querySelector('#id_c1124854-6f97-4983-965f-86b824a6672e button.colab-df-generate');
+        document.querySelector('#id_7d55fe4f-9696-428f-9b4c-b760775ec9ad button.colab-df-generate');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
@@ -1954,41 +1954,68 @@ Length: 158, dtype: object
 </div>
 <p>Jadi data 384 merupakan data yang terbebas dari outlier</p>
 </section>
-<section id="seleksi-fitur-menggunakan-korelasi">
-<h3>Seleksi Fitur Menggunakan Korelasi<a class="headerlink" href="#seleksi-fitur-menggunakan-korelasi" title="Link to this heading">#</a></h3>
+<section id="seleksi-fitur-menggunakan-information-gain">
+<h3>Seleksi Fitur Menggunakan Information Gain<a class="headerlink" href="#seleksi-fitur-menggunakan-information-gain" title="Link to this heading">#</a></h3>
+<p>Information Gain (IG) berasal dari konsep <em>entropy</em> dalam teori informasi Shannon.<br />
+Tujuannya adalah memilih fitur yang paling informatif terhadap <em>label</em>.</p>
+<hr class="docutils" />
+<p><strong>1. Entropy</strong></p>
+<p><span class="math notranslate nohighlight">\([
+H(Y) = - /sum_{i=1}^{n} p(y_i) /log_2 p(y_i)
+\)</span>]</p>
+<hr class="docutils" />
+<p><strong>2. Conditional Entropy</strong></p>
+<p><span class="math notranslate nohighlight">\([
+H(Y|X) = - /sum_{j=1}^{m} p(x_j) /sum_{i=1}^{n} p(y_i|x_j) /log_2 p(y_i|x_j)
+\)</span>]</p>
+<hr class="docutils" />
+<p><strong>3. Information Gain</strong></p>
+<p><span class="math notranslate nohighlight">\([
+IG(X) = H(Y) - H(Y|X)
+\)</span>]</p>
+<hr class="docutils" />
+<p><strong>4. Mutual Information (MI)</strong><br />
+Sklearn menghitung Information Gain menggunakan:</p>
+<p><span class="math notranslate nohighlight">\([
+MI(X, Y) = \sum_{x \in X} \sum_{y \in Y} p(x,y) \log \left( \frac{p(x,y)}{p(x)p(y)} \right)
+\)</span>]</p>
+<p>mutual_info_classif adalah estimator MI untuk data klasifikasi.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">data_clean</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.feature_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">mutual_info_classif</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LabelEncoder</span>
 
-<span class="n">kolom_numerik</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;float64&#39;</span><span class="p">,</span> <span class="s1">&#39;int64&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">columns</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">kolom_numerik</span><span class="p">]</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">({</span><span class="s1">&#39;buka&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;tutup&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
+<span class="n">le</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">le</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">])</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data_clean</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 
-<span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="n">hasil_korelasi</span><span class="o">=</span><span class="p">{}</span>
-<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
-  <span class="n">xi</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">,</span> <span class="s1">&#39;speaker&#39;</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span>
 
-  <span class="n">sigma_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">xi</span><span class="p">)</span>
-  <span class="n">sigma_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-  <span class="n">sigma_x2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">xi</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-  <span class="n">sigma_y2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">y</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-  <span class="n">sigma_xy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">xi</span> <span class="o">*</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">IG</span> <span class="o">=</span> <span class="n">mutual_info_classif</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">discrete_features</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
 
-  <span class="n">denom</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">n</span> <span class="o">*</span> <span class="n">sigma_x2</span> <span class="o">-</span> <span class="n">sigma_x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span> <span class="o">*</span> <span class="n">sigma_y2</span> <span class="o">-</span> <span class="n">sigma_y</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
-  <span class="k">if</span><span class="p">(</span><span class="n">denom</span> <span class="o">!=</span><span class="mi">0</span><span class="p">):</span>
-    <span class="n">R_xy</span> <span class="o">=</span> <span class="p">((</span><span class="n">n</span> <span class="o">*</span> <span class="n">sigma_xy</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">sigma_x</span> <span class="o">*</span> <span class="n">sigma_y</span><span class="p">))</span> <span class="o">/</span> <span class="n">denom</span>
-    <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">R_xy</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mf">0.5</span><span class="p">:</span>
-      <span class="n">hasil_korelasi</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">R_xy</span>
-    <span class="k">else</span><span class="p">:</span>
-      <span class="k">pass</span>
-<span class="n">selected_features</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">hasil_korelasi</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">selected_features</span><span class="p">)</span>
+<span class="n">ranking</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Fitur&#39;</span> <span class="p">:</span> <span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span>
+    <span class="s1">&#39;Information_Gain&#39;</span><span class="p">:</span> <span class="n">IG</span>
+<span class="p">})</span>
+
+<span class="n">ranking</span> <span class="o">=</span> <span class="n">ranking</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;Information_Gain&#39;</span><span class="p">,</span> <span class="n">ascending</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+<span class="n">ranking</span> <span class="o">=</span> <span class="n">ranking</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">ranking</span><span class="p">)</span>
+
+<span class="n">hasil_korelasi</span> <span class="o">=</span> <span class="n">ranking</span><span class="p">[</span><span class="s1">&#39;Fitur&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;0_LPCC_5&#39;, &#39;0_LPCC_7&#39;, &#39;0_Median frequency&#39;, &#39;0_Power bandwidth&#39;, &#39;0_Spectral entropy&#39;, &#39;0_Wavelet entropy&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                        Fitur  Information_Gain
+136                         0_Wavelet entropy          0.524760
+66                          0_Power bandwidth          0.480911
+60                         0_Median frequency          0.422765
+20                    0_Fundamental frequency          0.287963
+74                         0_Spectral entropy          0.216289
+86   0_Spectrogram mean coefficient_1548.39Hz          0.215041
 </pre></div>
 </div>
 </div>
@@ -1999,7 +2026,7 @@ Length: 158, dtype: object
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># hasil seleksi fitur</span>
-<span class="n">selected_features</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">hasil_korelasi</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="n">selected_features</span> <span class="o">=</span> <span class="n">ranking</span><span class="p">[</span><span class="s1">&#39;Fitur&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
 
 <span class="c1"># mnerapkan fitur terpilih ke data utama</span>
 <span class="n">fitur_selected</span> <span class="o">=</span> <span class="n">data_clean</span><span class="p">[</span><span class="n">selected_features</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;speaker&#39;</span><span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">]]</span>
@@ -2014,7 +2041,7 @@ Length: 158, dtype: object
 </pre></div>
 </div>
 <div class="output text_html">
-  <div id="df-a9bbe800-d865-44dc-ad39-ee01cbefda02" class="colab-df-container">
+  <div id="df-c067daf1-74d5-408e-b757-5e2b74fd233a" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -2033,12 +2060,12 @@ Length: 158, dtype: object
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>0_LPCC_5</th>
-      <th>0_LPCC_7</th>
-      <th>0_Median frequency</th>
-      <th>0_Power bandwidth</th>
-      <th>0_Spectral entropy</th>
       <th>0_Wavelet entropy</th>
+      <th>0_Power bandwidth</th>
+      <th>0_Median frequency</th>
+      <th>0_Fundamental frequency</th>
+      <th>0_Spectral entropy</th>
+      <th>0_Spectrogram mean coefficient_1548.39Hz</th>
       <th>speaker</th>
       <th>label</th>
     </tr>
@@ -2046,56 +2073,56 @@ Length: 158, dtype: object
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.250734</td>
-      <td>0.250734</td>
-      <td>473.429952</td>
-      <td>446.859903</td>
-      <td>0.546828</td>
       <td>1.927934</td>
+      <td>446.859903</td>
+      <td>473.429952</td>
+      <td>137.681159</td>
+      <td>0.546828</td>
+      <td>1.380870e-08</td>
       <td>fathan</td>
       <td>buka</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.171793</td>
-      <td>0.171793</td>
-      <td>485.294118</td>
-      <td>602.328431</td>
-      <td>0.541361</td>
       <td>1.942045</td>
+      <td>602.328431</td>
+      <td>485.294118</td>
+      <td>138.480392</td>
+      <td>0.541361</td>
+      <td>2.092478e-08</td>
       <td>fathan</td>
       <td>buka</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.069282</td>
-      <td>0.069282</td>
-      <td>482.456140</td>
-      <td>477.521930</td>
-      <td>0.526632</td>
       <td>1.945652</td>
+      <td>477.521930</td>
+      <td>482.456140</td>
+      <td>137.609649</td>
+      <td>0.526632</td>
+      <td>2.401121e-08</td>
       <td>fathan</td>
       <td>buka</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.036000</td>
-      <td>0.036000</td>
-      <td>602.106227</td>
-      <td>627.289377</td>
-      <td>0.577034</td>
       <td>1.963304</td>
+      <td>627.289377</td>
+      <td>602.106227</td>
+      <td>141.941392</td>
+      <td>0.577034</td>
+      <td>6.154491e-08</td>
       <td>fathan</td>
       <td>buka</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.064979</td>
-      <td>0.064979</td>
-      <td>476.080247</td>
-      <td>361.111111</td>
-      <td>0.487162</td>
       <td>1.925708</td>
+      <td>361.111111</td>
+      <td>476.080247</td>
+      <td>154.320988</td>
+      <td>0.487162</td>
+      <td>2.283147e-08</td>
       <td>fathan</td>
       <td>buka</td>
     </tr>
@@ -2105,7 +2132,7 @@ Length: 158, dtype: object
     <div class="colab-df-buttons">
 
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-a9bbe800-d865-44dc-ad39-ee01cbefda02')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-c067daf1-74d5-408e-b757-5e2b74fd233a')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
 
@@ -2157,12 +2184,12 @@ Length: 158, dtype: object
 
     <script>
       const buttonEl =
-        document.querySelector('#df-a9bbe800-d865-44dc-ad39-ee01cbefda02 button.colab-df-convert');
+        document.querySelector('#df-c067daf1-74d5-408e-b757-5e2b74fd233a button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-a9bbe800-d865-44dc-ad39-ee01cbefda02');
+        const element = document.querySelector('#df-c067daf1-74d5-408e-b757-5e2b74fd233a');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -2182,8 +2209,8 @@ Length: 158, dtype: object
   </div>
 
 
-    <div id="df-d480e5c8-578d-4980-b6c4-5b683504e78b">
-      <button class="colab-df-quickchart" onclick="quickchart('df-d480e5c8-578d-4980-b6c4-5b683504e78b')"
+    <div id="df-8fe577b1-29bc-49f7-a787-02d44074238e">
+      <button class="colab-df-quickchart" onclick="quickchart('df-8fe577b1-29bc-49f7-a787-02d44074238e')"
                 title="Suggest charts"
                 style="display:none;">
 
@@ -2302,7 +2329,7 @@ Length: 158, dtype: object
         }
         (() => {
           let quickchartButtonEl =
-            document.querySelector('#df-d480e5c8-578d-4980-b6c4-5b683504e78b button');
+            document.querySelector('#df-8fe577b1-29bc-49f7-a787-02d44074238e button');
           quickchartButtonEl.style.display =
             google.colab.kernel.accessAllowed ? 'block' : 'none';
         })();
@@ -2377,10 +2404,10 @@ d(x, y) = \sqrt{ \sum_{i=1}^{n} (x_i - y_i)^2 }
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Akurasi knn: 99.11
-Precision knn: 98.25
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Akurasi knn: 98.21
+Precision knn: 96.55
 Recall knn: 100.00
-F1-Score knn: 99.12
+F1-Score knn: 98.25
 </pre></div>
 </div>
 </div>
@@ -2438,10 +2465,10 @@ P(C \mid X) = \frac{P(X \mid C) \cdot P(C)}{P(X)}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Akurasi gnb: 97.32
-Precision gnb: 96.49
-Recall gnb: 98.21
-F1-Score gnb: 97.35
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Akurasi gnb: 94.64
+Precision gnb: 93.10
+Recall gnb: 96.43
+F1-Score gnb: 94.74
 </pre></div>
 </div>
 </div>
@@ -2525,10 +2552,10 @@ Bandingkan prediksi <span class="math notranslate nohighlight">\((\hat{y}\)</spa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Akurasi rf: 99.11
-Precision rf: 98.25
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Akurasi rf: 97.32
+Precision rf: 94.92
 Recall rf: 100.00
-F1-Score rf: 99.12
+F1-Score rf: 97.39
 </pre></div>
 </div>
 </div>
@@ -2541,10 +2568,10 @@ F1-Score rf: 99.12
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">evaluasi_model</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
     <span class="s2">&quot;Model&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;knn&quot;</span><span class="p">,</span> <span class="s2">&quot;naive bayes&quot;</span><span class="p">,</span> <span class="s2">&quot;random forest&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;accuracy&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;99.11&quot;</span><span class="p">,</span> <span class="s2">&quot;97.32&quot;</span><span class="p">,</span> <span class="s2">&quot;99.11&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;precision&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;98.25&quot;</span><span class="p">,</span> <span class="s2">&quot;96.49&quot;</span><span class="p">,</span> <span class="s2">&quot;98.25&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;recall&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;100.00&quot;</span><span class="p">,</span> <span class="s2">&quot;98.21&quot;</span> <span class="p">,</span><span class="s2">&quot;100.00&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;f1-score&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;99.12&quot;</span><span class="p">,</span> <span class="s2">&quot;97.35&quot;</span> <span class="p">,</span><span class="s2">&quot;99.12&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;accuracy&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;98.21&quot;</span><span class="p">,</span> <span class="s2">&quot;94.64&quot;</span><span class="p">,</span> <span class="s2">&quot;97.32&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;precision&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;96.55&quot;</span><span class="p">,</span> <span class="s2">&quot;93.10&quot;</span><span class="p">,</span> <span class="s2">&quot;94.92&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;recall&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;100.00&quot;</span><span class="p">,</span> <span class="s2">&quot;96.43&quot;</span> <span class="p">,</span><span class="s2">&quot;100.00&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;f1-score&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;98.25&quot;</span><span class="p">,</span> <span class="s2">&quot;94.74&quot;</span> <span class="p">,</span><span class="s2">&quot;97.39&quot;</span><span class="p">],</span>
 <span class="p">})</span>
 
 <span class="n">evaluasi_model</span>
@@ -2553,7 +2580,7 @@ F1-Score rf: 99.12
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-d679c2df-4f12-47fe-ba0d-0179bd10fd08" class="colab-df-container">
+  <div id="df-43df6b57-d02f-420c-9518-e426676b4e24" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -2583,26 +2610,26 @@ F1-Score rf: 99.12
     <tr>
       <th>0</th>
       <td>knn</td>
-      <td>99.11</td>
-      <td>98.25</td>
+      <td>98.21</td>
+      <td>96.55</td>
       <td>100.00</td>
-      <td>99.12</td>
+      <td>98.25</td>
     </tr>
     <tr>
       <th>1</th>
       <td>naive bayes</td>
-      <td>97.32</td>
-      <td>96.49</td>
-      <td>98.21</td>
-      <td>97.35</td>
+      <td>94.64</td>
+      <td>93.10</td>
+      <td>96.43</td>
+      <td>94.74</td>
     </tr>
     <tr>
       <th>2</th>
       <td>random forest</td>
-      <td>99.11</td>
-      <td>98.25</td>
+      <td>97.32</td>
+      <td>94.92</td>
       <td>100.00</td>
-      <td>99.12</td>
+      <td>97.39</td>
     </tr>
   </tbody>
 </table>
@@ -2610,7 +2637,7 @@ F1-Score rf: 99.12
     <div class="colab-df-buttons">
 
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-d679c2df-4f12-47fe-ba0d-0179bd10fd08')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-43df6b57-d02f-420c-9518-e426676b4e24')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
 
@@ -2662,12 +2689,12 @@ F1-Score rf: 99.12
 
     <script>
       const buttonEl =
-        document.querySelector('#df-d679c2df-4f12-47fe-ba0d-0179bd10fd08 button.colab-df-convert');
+        document.querySelector('#df-43df6b57-d02f-420c-9518-e426676b4e24 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-d679c2df-4f12-47fe-ba0d-0179bd10fd08');
+        const element = document.querySelector('#df-43df6b57-d02f-420c-9518-e426676b4e24');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -2687,8 +2714,8 @@ F1-Score rf: 99.12
   </div>
 
 
-    <div id="df-84b65834-4392-4865-a383-65d4ccd17f0d">
-      <button class="colab-df-quickchart" onclick="quickchart('df-84b65834-4392-4865-a383-65d4ccd17f0d')"
+    <div id="df-df12bec3-6ad1-4bc7-a047-f9a9dd37e279">
+      <button class="colab-df-quickchart" onclick="quickchart('df-df12bec3-6ad1-4bc7-a047-f9a9dd37e279')"
                 title="Suggest charts"
                 style="display:none;">
 
@@ -2807,14 +2834,14 @@ F1-Score rf: 99.12
         }
         (() => {
           let quickchartButtonEl =
-            document.querySelector('#df-84b65834-4392-4865-a383-65d4ccd17f0d button');
+            document.querySelector('#df-df12bec3-6ad1-4bc7-a047-f9a9dd37e279 button');
           quickchartButtonEl.style.display =
             google.colab.kernel.accessAllowed ? 'block' : 'none';
         })();
       </script>
     </div>
 
-  <div id="id_57221954-684b-4b59-b48a-795477d2ee49">
+  <div id="id_16316f9d-9177-4cb1-aa35-50201899e142">
     <style>
       .colab-df-generate {
         background-color: #E8F0FE;
@@ -2858,7 +2885,7 @@ F1-Score rf: 99.12
     <script>
       (() => {
       const buttonEl =
-        document.querySelector('#id_57221954-684b-4b59-b48a-795477d2ee49 button.colab-df-generate');
+        document.querySelector('#id_16316f9d-9177-4cb1-aa35-50201899e142 button.colab-df-generate');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
@@ -2914,10 +2941,10 @@ F1-Score rf: 99.12
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Akurasi knn: 89.29
-Precision knn: 91.43
-Recall knn: 78.05
-F1-Score knn: 84.21
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Akurasi knn: 98.21
+Precision knn: 97.56
+Recall knn: 97.56
+F1-Score knn: 97.56
 </pre></div>
 </div>
 </div>
@@ -2960,10 +2987,10 @@ F1-Score knn: 84.21
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Akurasi knn: 90.18
-Precision knn: 84.21
-Recall knn: 86.49
-F1-Score knn: 85.33
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Akurasi knn: 97.32
+Precision knn: 92.50
+Recall knn: 100.00
+F1-Score knn: 96.10
 </pre></div>
 </div>
 </div>
@@ -3139,7 +3166,7 @@ max_prob: 1.0
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-prepocessing">Data Prepocessing</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghapus-data-outlier">Menghapus data Outlier</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#seleksi-fitur-menggunakan-korelasi">Seleksi Fitur Menggunakan Korelasi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#seleksi-fitur-menggunakan-information-gain">Seleksi Fitur Menggunakan Information Gain</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mensortir-ke-data-utama-untuk-fitur-yang-digunakan">Mensortir ke Data Utama untuk fitur yang digunakan</a></li>
 </ul>
 </li>
