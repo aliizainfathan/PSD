@@ -1,0 +1,1149 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Dynamic Time Wrapping &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Dynamic_Time_Wrapping';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Voice Identification" href="Voice%20Identification.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.jpg" class="logo__image only-light" alt="My sample book - Home"/>
+    <script>document.write(`<img src="_static/logo.jpg" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to site Proyek Sains Data
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Bussiness%20Understanding.html">Bussiness Understanding Tokepedia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Data%20Understanding.html">Data Understanding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Data_Understanding.html">Data Understanding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Data_Understanding%20dan%20Eksplorasi%20Data.html">Data Understanding dan Eksplorasi Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Data_Prepocessing.html">Prepocessing Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Imbalanced%20Data.html">Imbalanced Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Imbalanced%20Data%20dan%20Klasifikasi.html">Imbalanced Data dan Klasifikasi Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Analisis%20Data%20KNIME.html">Analisis Data Menggunakan Tools KNIME</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Peramalan_Kualitas_Polusi_NO2.html">Peramalan Kualitas Polusi NO2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Voice%20Identification.html">Voice Identification</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Dynamic Time Wrapping</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FDynamic_Time_Wrapping.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Dynamic_Time_Wrapping.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Dynamic Time Wrapping</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#library-yang-dibutuhkan">Library yang dibutuhkan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengekstrak-data-time-series-dari-data-seara-dengan-label-buka-dan-tutup">Mengekstrak data time series dari data seara dengan label ‘Buka’ dan ‘tutup’</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-10-data-time-series-yang-dihasilkan">Hasil 10 data time series yang dihasilkan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-test">Data Test</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perhitungan-dynamic-time-wrapping">Perhitungan Dynamic Time Wrapping</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menambahkan-label-berdasarkan-real-dataset">Menambahkan label berdasarkan real dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengurutkan-nilai-dwt">Mengurutkan Nilai DWT</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">Kesimpulan</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#label-data-test-berdasarkan-nilai-dwt-terendah">Label Data Test Berdasarkan Nilai DWT Terendah</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="dynamic-time-wrapping">
+<h1>Dynamic Time Wrapping<a class="headerlink" href="#dynamic-time-wrapping" title="Link to this heading">#</a></h1>
+<p>Dynamic Time Warping (DTW) adalah sebuah algoritma untuk mengukur <em>kemiripan</em> antara dua deret waktu (<em>time series</em>)
+yang mungkin memiliki panjang berbeda atau kecepatan berbeda.<br />
+DTW bekerja dengan mencari <em>alignment</em> terbaik antara dua sinyal sehingga total jarak antara titik-titik yang dibandingkan menjadi minimum.</p>
+<p>DTW sering dipakai pada:</p>
+<ul class="simple">
+<li><p>Speech recognition</p></li>
+<li><p>Analisis sinyal sensor</p></li>
+<li><p>Motion tracking</p></li>
+<li><p>Klasifikasi dan clustering time series</p></li>
+</ul>
+<section id="library-yang-dibutuhkan">
+<h2>Library yang dibutuhkan<a class="headerlink" href="#library-yang-dibutuhkan" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">librosa</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="mengekstrak-data-time-series-dari-data-seara-dengan-label-buka-dan-tutup">
+<h2>Mengekstrak data time series dari data seara dengan label ‘Buka’ dan ‘tutup’<a class="headerlink" href="#mengekstrak-data-time-series-dari-data-seara-dengan-label-buka-dan-tutup" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">folder</span> <span class="o">=</span> <span class="s1">&#39;/content/drive/MyDrive/data_PSD/data_suara_time_wrappping&#39;</span>
+
+<span class="n">data_time_series</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">folder</span><span class="p">):</span>
+  <span class="k">if</span> <span class="n">i</span><span class="o">.</span><span class="n">endswith</span><span class="p">((</span><span class="s1">&#39;.wav&#39;</span><span class="p">,</span> <span class="s1">&#39;.mp3&#39;</span><span class="p">)):</span>
+    <span class="n">path_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">sr</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">path_file</span><span class="p">,</span> <span class="n">sr</span> <span class="o">=</span> <span class="mi">4000</span><span class="p">)</span>
+    <span class="n">data_time_series</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">folder</span> <span class="o">=</span> <span class="s1">&#39;/content/drive/MyDrive/data_PSD/data_suara_time_wrappping&#39;</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">data_time_series</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">folder</span><span class="p">):</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span>   <span class="k">if</span> <span class="n">i</span><span class="o">.</span><span class="n">endswith</span><span class="p">((</span><span class="s1">&#39;.wav&#39;</span><span class="p">,</span> <span class="s1">&#39;.mp3&#39;</span><span class="p">)):</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span>     <span class="n">path_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+
+<span class="ne">FileNotFoundError</span>: [WinError 3] The system cannot find the path specified: &#39;/content/drive/MyDrive/data_PSD/data_suara_time_wrappping&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="hasil-10-data-time-series-yang-dihasilkan">
+<h2>Hasil 10 data time series yang dihasilkan<a class="headerlink" href="#hasil-10-data-time-series-yang-dihasilkan" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;10 data pertama data time series suara&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> indeks ke- </span><span class="si">{</span><span class="n">j</span><span class="si">}</span><span class="s2">, data = </span><span class="si">{</span><span class="n">data_time_series</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10 data pertama data time series suara
+
+ indeks ke- 0, data = [6.4028427e-10 1.4551915e-10 4.0745363e-10 ... 7.3487044e-04 8.2284957e-04
+ 9.0314628e-04]
+
+ indeks ke- 1, data = [ 5.8207661e-11  8.7311491e-11 -2.9103830e-11 ...  2.1789318e-04
+  3.8899285e-05 -4.7112429e-05]
+
+ indeks ke- 2, data = [-2.1827873e-11  0.0000000e+00 -7.2759576e-12 ... -3.8544822e-04
+ -3.1474186e-04 -4.0618455e-04]
+
+ indeks ke- 3, data = [ 1.4551915e-11 -2.1827873e-11  7.2759576e-12 ... -6.0990907e-04
+ -5.1070319e-04 -7.4119045e-04]
+
+ indeks ke- 4, data = [ 1.4551915e-11  4.3655746e-11  0.0000000e+00 ... -4.8730351e-04
+ -4.5495119e-04 -3.9114399e-04]
+
+ indeks ke- 5, data = [-3.6379788e-11 -1.4551915e-11 -1.4551915e-11 ...  3.2236252e-04
+  3.9786194e-04  5.8360019e-04]
+
+ indeks ke- 6, data = [ 0.0000000e+00  3.6379788e-11  1.4551915e-11 ...  3.7378886e-06
+ -9.0922724e-05 -1.5665835e-04]
+
+ indeks ke- 7, data = [-5.0931703e-11 -1.4551915e-11  5.8207661e-11 ...  1.8611464e-04
+  3.1201294e-04  5.5205508e-04]
+
+ indeks ke- 8, data = [ 2.91038305e-11  4.36557457e-11  4.36557457e-11 ...  1.84333490e-04
+  1.04201434e-04 -8.22195725e-05]
+
+ indeks ke- 9, data = [-7.2759576e-12  0.0000000e+00  7.2759576e-12 ... -1.9264885e-04
+  7.9774953e-05  2.2830974e-04]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="data-test">
+<h2>Data Test<a class="headerlink" href="#data-test" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file_y</span> <span class="o">=</span> <span class="s2">&quot;/content/drive/MyDrive/data_PSD/test.mp3&quot;</span>
+
+<span class="n">y</span><span class="p">,</span> <span class="n">sr</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file_y</span><span class="p">,</span> <span class="n">sr</span> <span class="o">=</span> <span class="mi">4000</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;data time series y = &quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>data time series y =  [-1.1641532e-10  5.8207661e-11  0.0000000e+00 ...  5.3613132e-04
+  6.1152177e-04  7.7914959e-04]
+8736
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="perhitungan-dynamic-time-wrapping">
+<h2>Perhitungan Dynamic Time Wrapping<a class="headerlink" href="#perhitungan-dynamic-time-wrapping" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">matrix_final</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data_time_series</span><span class="p">)):</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Proses Iterasi ke-&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+  <span class="c1"># data time series x</span>
+  <span class="n">x</span> <span class="o">=</span> <span class="n">data_time_series</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+  <span class="c1"># panjang setiap data time series</span>
+  <span class="n">panjang_x</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data_time_series</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+  <span class="n">panjang_y</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+  <span class="n">n</span> <span class="o">=</span> <span class="n">panjang_x</span> <span class="o">+</span> <span class="mi">1</span>
+  <span class="n">m</span> <span class="o">=</span> <span class="n">panjang_y</span> <span class="o">+</span> <span class="mi">1</span>
+
+  <span class="c1"># inisialisasi matrix akumulasi</span>
+  <span class="n">matrix_akumulasi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">)</span>
+  <span class="n">matrix_akumulasi</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+  <span class="c1"># mengisi matrix akumulasi</span>
+  <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">panjang_x</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">panjang_y</span><span class="p">):</span>
+      <span class="n">matrix_cost</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">l</span><span class="p">]</span> <span class="o">-</span> <span class="n">y</span><span class="p">[</span><span class="n">m</span><span class="p">])</span> <span class="o">**</span> <span class="mi">2</span>
+      <span class="n">matrix_akumulasi</span><span class="p">[</span><span class="n">l</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">m</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">matrix_cost</span> <span class="o">+</span> <span class="nb">min</span><span class="p">(</span><span class="n">matrix_akumulasi</span><span class="p">[</span><span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">],</span>
+                                           <span class="n">matrix_akumulasi</span><span class="p">[</span><span class="n">l</span><span class="p">,</span> <span class="n">m</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span>
+                                           <span class="n">matrix_akumulasi</span><span class="p">[</span><span class="n">l</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">m</span><span class="p">])</span>
+
+  <span class="n">nilai_dwt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">matrix_akumulasi</span><span class="p">[</span><span class="n">panjang_x</span><span class="p">,</span> <span class="n">panjang_y</span><span class="p">])</span>
+  <span class="n">matrix_final</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">i</span><span class="p">,</span> <span class="n">nilai_dwt</span><span class="p">])</span>
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;proses iterasi ke- </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> selesai&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">matrix_final</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Proses Iterasi ke- 0
+proses iterasi ke- 0 selesai
+Proses Iterasi ke- 1
+proses iterasi ke- 1 selesai
+Proses Iterasi ke- 2
+proses iterasi ke- 2 selesai
+Proses Iterasi ke- 3
+proses iterasi ke- 3 selesai
+Proses Iterasi ke- 4
+proses iterasi ke- 4 selesai
+Proses Iterasi ke- 5
+proses iterasi ke- 5 selesai
+Proses Iterasi ke- 6
+proses iterasi ke- 6 selesai
+Proses Iterasi ke- 7
+proses iterasi ke- 7 selesai
+Proses Iterasi ke- 8
+proses iterasi ke- 8 selesai
+Proses Iterasi ke- 9
+proses iterasi ke- 9 selesai
+Proses Iterasi ke- 10
+proses iterasi ke- 10 selesai
+Proses Iterasi ke- 11
+proses iterasi ke- 11 selesai
+Proses Iterasi ke- 12
+proses iterasi ke- 12 selesai
+Proses Iterasi ke- 13
+proses iterasi ke- 13 selesai
+Proses Iterasi ke- 14
+proses iterasi ke- 14 selesai
+Proses Iterasi ke- 15
+proses iterasi ke- 15 selesai
+Proses Iterasi ke- 16
+proses iterasi ke- 16 selesai
+Proses Iterasi ke- 17
+proses iterasi ke- 17 selesai
+Proses Iterasi ke- 18
+proses iterasi ke- 18 selesai
+Proses Iterasi ke- 19
+proses iterasi ke- 19 selesai
+Proses Iterasi ke- 20
+proses iterasi ke- 20 selesai
+Proses Iterasi ke- 21
+proses iterasi ke- 21 selesai
+Proses Iterasi ke- 22
+proses iterasi ke- 22 selesai
+Proses Iterasi ke- 23
+proses iterasi ke- 23 selesai
+Proses Iterasi ke- 24
+proses iterasi ke- 24 selesai
+Proses Iterasi ke- 25
+proses iterasi ke- 25 selesai
+Proses Iterasi ke- 26
+proses iterasi ke- 26 selesai
+Proses Iterasi ke- 27
+proses iterasi ke- 27 selesai
+Proses Iterasi ke- 28
+proses iterasi ke- 28 selesai
+Proses Iterasi ke- 29
+proses iterasi ke- 29 selesai
+Proses Iterasi ke- 30
+proses iterasi ke- 30 selesai
+Proses Iterasi ke- 31
+proses iterasi ke- 31 selesai
+Proses Iterasi ke- 32
+proses iterasi ke- 32 selesai
+Proses Iterasi ke- 33
+proses iterasi ke- 33 selesai
+Proses Iterasi ke- 34
+proses iterasi ke- 34 selesai
+Proses Iterasi ke- 35
+proses iterasi ke- 35 selesai
+Proses Iterasi ke- 36
+proses iterasi ke- 36 selesai
+Proses Iterasi ke- 37
+proses iterasi ke- 37 selesai
+Proses Iterasi ke- 38
+proses iterasi ke- 38 selesai
+Proses Iterasi ke- 39
+proses iterasi ke- 39 selesai
+Proses Iterasi ke- 40
+proses iterasi ke- 40 selesai
+Proses Iterasi ke- 41
+proses iterasi ke- 41 selesai
+Proses Iterasi ke- 42
+proses iterasi ke- 42 selesai
+Proses Iterasi ke- 43
+proses iterasi ke- 43 selesai
+Proses Iterasi ke- 44
+proses iterasi ke- 44 selesai
+Proses Iterasi ke- 45
+proses iterasi ke- 45 selesai
+Proses Iterasi ke- 46
+proses iterasi ke- 46 selesai
+Proses Iterasi ke- 47
+proses iterasi ke- 47 selesai
+Proses Iterasi ke- 48
+proses iterasi ke- 48 selesai
+Proses Iterasi ke- 49
+proses iterasi ke- 49 selesai
+Proses Iterasi ke- 50
+proses iterasi ke- 50 selesai
+Proses Iterasi ke- 51
+proses iterasi ke- 51 selesai
+Proses Iterasi ke- 52
+proses iterasi ke- 52 selesai
+Proses Iterasi ke- 53
+proses iterasi ke- 53 selesai
+Proses Iterasi ke- 54
+proses iterasi ke- 54 selesai
+Proses Iterasi ke- 55
+proses iterasi ke- 55 selesai
+Proses Iterasi ke- 56
+proses iterasi ke- 56 selesai
+Proses Iterasi ke- 57
+proses iterasi ke- 57 selesai
+Proses Iterasi ke- 58
+proses iterasi ke- 58 selesai
+Proses Iterasi ke- 59
+proses iterasi ke- 59 selesai
+Proses Iterasi ke- 60
+proses iterasi ke- 60 selesai
+Proses Iterasi ke- 61
+proses iterasi ke- 61 selesai
+Proses Iterasi ke- 62
+proses iterasi ke- 62 selesai
+Proses Iterasi ke- 63
+proses iterasi ke- 63 selesai
+Proses Iterasi ke- 64
+proses iterasi ke- 64 selesai
+Proses Iterasi ke- 65
+proses iterasi ke- 65 selesai
+Proses Iterasi ke- 66
+proses iterasi ke- 66 selesai
+Proses Iterasi ke- 67
+proses iterasi ke- 67 selesai
+Proses Iterasi ke- 68
+proses iterasi ke- 68 selesai
+Proses Iterasi ke- 69
+proses iterasi ke- 69 selesai
+Proses Iterasi ke- 70
+proses iterasi ke- 70 selesai
+Proses Iterasi ke- 71
+proses iterasi ke- 71 selesai
+Proses Iterasi ke- 72
+proses iterasi ke- 72 selesai
+Proses Iterasi ke- 73
+proses iterasi ke- 73 selesai
+Proses Iterasi ke- 74
+proses iterasi ke- 74 selesai
+Proses Iterasi ke- 75
+proses iterasi ke- 75 selesai
+Proses Iterasi ke- 76
+proses iterasi ke- 76 selesai
+Proses Iterasi ke- 77
+proses iterasi ke- 77 selesai
+Proses Iterasi ke- 78
+proses iterasi ke- 78 selesai
+Proses Iterasi ke- 79
+proses iterasi ke- 79 selesai
+Proses Iterasi ke- 80
+proses iterasi ke- 80 selesai
+Proses Iterasi ke- 81
+proses iterasi ke- 81 selesai
+Proses Iterasi ke- 82
+proses iterasi ke- 82 selesai
+Proses Iterasi ke- 83
+proses iterasi ke- 83 selesai
+Proses Iterasi ke- 84
+proses iterasi ke- 84 selesai
+Proses Iterasi ke- 85
+proses iterasi ke- 85 selesai
+Proses Iterasi ke- 86
+proses iterasi ke- 86 selesai
+Proses Iterasi ke- 87
+proses iterasi ke- 87 selesai
+Proses Iterasi ke- 88
+proses iterasi ke- 88 selesai
+Proses Iterasi ke- 89
+proses iterasi ke- 89 selesai
+Proses Iterasi ke- 90
+proses iterasi ke- 90 selesai
+Proses Iterasi ke- 91
+proses iterasi ke- 91 selesai
+Proses Iterasi ke- 92
+proses iterasi ke- 92 selesai
+Proses Iterasi ke- 93
+proses iterasi ke- 93 selesai
+Proses Iterasi ke- 94
+proses iterasi ke- 94 selesai
+Proses Iterasi ke- 95
+proses iterasi ke- 95 selesai
+Proses Iterasi ke- 96
+proses iterasi ke- 96 selesai
+Proses Iterasi ke- 97
+proses iterasi ke- 97 selesai
+Proses Iterasi ke- 98
+proses iterasi ke- 98 selesai
+Proses Iterasi ke- 99
+proses iterasi ke- 99 selesai
+Proses Iterasi ke- 100
+proses iterasi ke- 100 selesai
+Proses Iterasi ke- 101
+proses iterasi ke- 101 selesai
+Proses Iterasi ke- 102
+proses iterasi ke- 102 selesai
+Proses Iterasi ke- 103
+proses iterasi ke- 103 selesai
+Proses Iterasi ke- 104
+proses iterasi ke- 104 selesai
+Proses Iterasi ke- 105
+proses iterasi ke- 105 selesai
+Proses Iterasi ke- 106
+proses iterasi ke- 106 selesai
+Proses Iterasi ke- 107
+proses iterasi ke- 107 selesai
+Proses Iterasi ke- 108
+proses iterasi ke- 108 selesai
+Proses Iterasi ke- 109
+proses iterasi ke- 109 selesai
+Proses Iterasi ke- 110
+proses iterasi ke- 110 selesai
+Proses Iterasi ke- 111
+proses iterasi ke- 111 selesai
+Proses Iterasi ke- 112
+proses iterasi ke- 112 selesai
+Proses Iterasi ke- 113
+proses iterasi ke- 113 selesai
+Proses Iterasi ke- 114
+proses iterasi ke- 114 selesai
+Proses Iterasi ke- 115
+proses iterasi ke- 115 selesai
+Proses Iterasi ke- 116
+proses iterasi ke- 116 selesai
+Proses Iterasi ke- 117
+proses iterasi ke- 117 selesai
+Proses Iterasi ke- 118
+proses iterasi ke- 118 selesai
+Proses Iterasi ke- 119
+proses iterasi ke- 119 selesai
+Proses Iterasi ke- 120
+proses iterasi ke- 120 selesai
+Proses Iterasi ke- 121
+proses iterasi ke- 121 selesai
+Proses Iterasi ke- 122
+proses iterasi ke- 122 selesai
+Proses Iterasi ke- 123
+proses iterasi ke- 123 selesai
+Proses Iterasi ke- 124
+proses iterasi ke- 124 selesai
+Proses Iterasi ke- 125
+proses iterasi ke- 125 selesai
+Proses Iterasi ke- 126
+proses iterasi ke- 126 selesai
+Proses Iterasi ke- 127
+proses iterasi ke- 127 selesai
+Proses Iterasi ke- 128
+proses iterasi ke- 128 selesai
+Proses Iterasi ke- 129
+proses iterasi ke- 129 selesai
+Proses Iterasi ke- 130
+proses iterasi ke- 130 selesai
+Proses Iterasi ke- 131
+proses iterasi ke- 131 selesai
+Proses Iterasi ke- 132
+proses iterasi ke- 132 selesai
+Proses Iterasi ke- 133
+proses iterasi ke- 133 selesai
+Proses Iterasi ke- 134
+proses iterasi ke- 134 selesai
+Proses Iterasi ke- 135
+proses iterasi ke- 135 selesai
+Proses Iterasi ke- 136
+proses iterasi ke- 136 selesai
+Proses Iterasi ke- 137
+proses iterasi ke- 137 selesai
+Proses Iterasi ke- 138
+proses iterasi ke- 138 selesai
+Proses Iterasi ke- 139
+proses iterasi ke- 139 selesai
+Proses Iterasi ke- 140
+proses iterasi ke- 140 selesai
+Proses Iterasi ke- 141
+proses iterasi ke- 141 selesai
+Proses Iterasi ke- 142
+proses iterasi ke- 142 selesai
+Proses Iterasi ke- 143
+proses iterasi ke- 143 selesai
+Proses Iterasi ke- 144
+proses iterasi ke- 144 selesai
+Proses Iterasi ke- 145
+proses iterasi ke- 145 selesai
+Proses Iterasi ke- 146
+proses iterasi ke- 146 selesai
+Proses Iterasi ke- 147
+proses iterasi ke- 147 selesai
+Proses Iterasi ke- 148
+proses iterasi ke- 148 selesai
+Proses Iterasi ke- 149
+proses iterasi ke- 149 selesai
+Proses Iterasi ke- 150
+proses iterasi ke- 150 selesai
+Proses Iterasi ke- 151
+proses iterasi ke- 151 selesai
+Proses Iterasi ke- 152
+proses iterasi ke- 152 selesai
+Proses Iterasi ke- 153
+proses iterasi ke- 153 selesai
+Proses Iterasi ke- 154
+proses iterasi ke- 154 selesai
+Proses Iterasi ke- 155
+proses iterasi ke- 155 selesai
+Proses Iterasi ke- 156
+proses iterasi ke- 156 selesai
+Proses Iterasi ke- 157
+proses iterasi ke- 157 selesai
+Proses Iterasi ke- 158
+proses iterasi ke- 158 selesai
+Proses Iterasi ke- 159
+proses iterasi ke- 159 selesai
+Proses Iterasi ke- 160
+proses iterasi ke- 160 selesai
+Proses Iterasi ke- 161
+proses iterasi ke- 161 selesai
+Proses Iterasi ke- 162
+proses iterasi ke- 162 selesai
+Proses Iterasi ke- 163
+proses iterasi ke- 163 selesai
+Proses Iterasi ke- 164
+proses iterasi ke- 164 selesai
+Proses Iterasi ke- 165
+proses iterasi ke- 165 selesai
+Proses Iterasi ke- 166
+proses iterasi ke- 166 selesai
+Proses Iterasi ke- 167
+proses iterasi ke- 167 selesai
+Proses Iterasi ke- 168
+proses iterasi ke- 168 selesai
+Proses Iterasi ke- 169
+proses iterasi ke- 169 selesai
+Proses Iterasi ke- 170
+proses iterasi ke- 170 selesai
+Proses Iterasi ke- 171
+proses iterasi ke- 171 selesai
+Proses Iterasi ke- 172
+proses iterasi ke- 172 selesai
+Proses Iterasi ke- 173
+proses iterasi ke- 173 selesai
+Proses Iterasi ke- 174
+proses iterasi ke- 174 selesai
+Proses Iterasi ke- 175
+proses iterasi ke- 175 selesai
+Proses Iterasi ke- 176
+proses iterasi ke- 176 selesai
+Proses Iterasi ke- 177
+proses iterasi ke- 177 selesai
+Proses Iterasi ke- 178
+proses iterasi ke- 178 selesai
+Proses Iterasi ke- 179
+proses iterasi ke- 179 selesai
+Proses Iterasi ke- 180
+proses iterasi ke- 180 selesai
+Proses Iterasi ke- 181
+proses iterasi ke- 181 selesai
+Proses Iterasi ke- 182
+proses iterasi ke- 182 selesai
+Proses Iterasi ke- 183
+proses iterasi ke- 183 selesai
+Proses Iterasi ke- 184
+proses iterasi ke- 184 selesai
+Proses Iterasi ke- 185
+proses iterasi ke- 185 selesai
+Proses Iterasi ke- 186
+proses iterasi ke- 186 selesai
+Proses Iterasi ke- 187
+proses iterasi ke- 187 selesai
+Proses Iterasi ke- 188
+proses iterasi ke- 188 selesai
+Proses Iterasi ke- 189
+proses iterasi ke- 189 selesai
+Proses Iterasi ke- 190
+proses iterasi ke- 190 selesai
+Proses Iterasi ke- 191
+proses iterasi ke- 191 selesai
+Proses Iterasi ke- 192
+proses iterasi ke- 192 selesai
+Proses Iterasi ke- 193
+proses iterasi ke- 193 selesai
+Proses Iterasi ke- 194
+proses iterasi ke- 194 selesai
+Proses Iterasi ke- 195
+proses iterasi ke- 195 selesai
+Proses Iterasi ke- 196
+proses iterasi ke- 196 selesai
+Proses Iterasi ke- 197
+proses iterasi ke- 197 selesai
+Proses Iterasi ke- 198
+proses iterasi ke- 198 selesai
+Proses Iterasi ke- 199
+proses iterasi ke- 199 selesai
+[[0, np.float64(2.3277324383474234)], [1, np.float64(2.285439958765221)], [2, np.float64(2.9208939969009693)], [3, np.float64(3.2182455901021054)], [4, np.float64(3.31206854135007)], [5, np.float64(2.6836438503501716)], [6, np.float64(2.8886372751105642)], [7, np.float64(3.1307778532462254)], [8, np.float64(3.312537657880684)], [9, np.float64(3.5183104596360857)], [10, np.float64(3.689102454367805)], [11, np.float64(3.9800422149787438)], [12, np.float64(3.923239869317818)], [13, np.float64(4.220388176525509)], [14, np.float64(3.984002467873207)], [15, np.float64(4.25420372664838)], [16, np.float64(4.158424402474599)], [17, np.float64(4.013194409790969)], [18, np.float64(4.146949949056836)], [19, np.float64(4.243490312067787)], [20, np.float64(3.7905814885188023)], [21, np.float64(3.8782254011166994)], [22, np.float64(4.16155103104739)], [23, np.float64(4.199914461483816)], [24, np.float64(3.899319126393814)], [25, np.float64(3.9629346041743077)], [26, np.float64(4.264204265392749)], [27, np.float64(4.205174112163949)], [28, np.float64(4.201176065763057)], [29, np.float64(4.191314803307133)], [30, np.float64(4.297464403828622)], [31, np.float64(3.553284647464119)], [32, np.float64(4.165245308335113)], [33, np.float64(4.326078048944187)], [34, np.float64(3.782676446313269)], [35, np.float64(3.7048448901163273)], [36, np.float64(3.9350876558428776)], [37, np.float64(3.9670256790010248)], [38, np.float64(3.80880514921502)], [39, np.float64(4.067368786776174)], [40, np.float64(4.38459134518594)], [41, np.float64(4.10667477070107)], [42, np.float64(3.8187192069033915)], [43, np.float64(3.718823971220277)], [44, np.float64(4.053012668055611)], [45, np.float64(3.9774099777797707)], [46, np.float64(4.067677640947397)], [47, np.float64(4.126643393602802)], [48, np.float64(4.180794362034623)], [49, np.float64(3.9279852467246203)], [50, np.float64(3.6917962561284305)], [51, np.float64(3.935883559279984)], [52, np.float64(3.579890368029975)], [53, np.float64(3.588033153300932)], [54, np.float64(3.833613974036969)], [55, np.float64(3.998843411563069)], [56, np.float64(4.101655290362898)], [57, np.float64(3.5222394824931214)], [58, np.float64(3.9664007431951673)], [59, np.float64(4.007927771354259)], [60, np.float64(3.8150095632859786)], [61, np.float64(3.8991923093446275)], [62, np.float64(3.9533921459267307)], [63, np.float64(4.054220398515477)], [64, np.float64(4.04105483992484)], [65, np.float64(4.17209824498414)], [66, np.float64(3.825459523300755)], [67, np.float64(4.146370789316006)], [68, np.float64(3.7659202778434095)], [69, np.float64(4.320936380402184)], [70, np.float64(3.6678932072485892)], [71, np.float64(4.046660177463136)], [72, np.float64(4.045925754980025)], [73, np.float64(4.071069063365194)], [74, np.float64(4.29242583367423)], [75, np.float64(4.054810340192847)], [76, np.float64(4.116467735847339)], [77, np.float64(4.286834833754183)], [78, np.float64(3.9861681581525343)], [79, np.float64(4.175058067835156)], [80, np.float64(4.046458064208782)], [81, np.float64(4.1329018135349616)], [82, np.float64(4.379149520571387)], [83, np.float64(4.226573885356072)], [84, np.float64(3.977480535362717)], [85, np.float64(3.999280724508174)], [86, np.float64(3.7918361057688377)], [87, np.float64(4.000758436550542)], [88, np.float64(4.052070603337472)], [89, np.float64(4.00382622952601)], [90, np.float64(4.188998515990488)], [91, np.float64(4.280551142021861)], [92, np.float64(4.2809798564947386)], [93, np.float64(4.394315010717635)], [94, np.float64(4.244904471973181)], [95, np.float64(4.291935606240436)], [96, np.float64(4.39323113231232)], [97, np.float64(4.302935902703064)], [98, np.float64(4.328708469585393)], [99, np.float64(4.183194626736848)], [100, np.float64(4.203735461730391)], [101, np.float64(4.5988007488309295)], [102, np.float64(4.519173509059657)], [103, np.float64(4.356832139008057)], [104, np.float64(4.340669798304871)], [105, np.float64(4.175112949805577)], [106, np.float64(3.8470226700243044)], [107, np.float64(4.376741402413952)], [108, np.float64(3.939171907358673)], [109, np.float64(4.323989518872455)], [110, np.float64(4.2187661158149385)], [111, np.float64(4.373982050205426)], [112, np.float64(4.565436764855177)], [113, np.float64(4.205450944925907)], [114, np.float64(4.266838677159941)], [115, np.float64(4.5957853528057395)], [116, np.float64(4.297629744004122)], [117, np.float64(4.4943591051150475)], [118, np.float64(4.2968377159241875)], [119, np.float64(4.334643614915107)], [120, np.float64(4.189528609620404)], [121, np.float64(4.360499151197666)], [122, np.float64(4.487206986975777)], [123, np.float64(4.451295153139351)], [124, np.float64(4.4227345907303395)], [125, np.float64(4.332180232013238)], [126, np.float64(4.484629368760492)], [127, np.float64(4.6869230263352755)], [128, np.float64(4.7170876090723475)], [129, np.float64(4.426702036713683)], [130, np.float64(4.177312407150181)], [131, np.float64(4.442113415328985)], [132, np.float64(4.574367127988419)], [133, np.float64(4.505907946892275)], [134, np.float64(4.625282876042095)], [135, np.float64(4.540415383663418)], [136, np.float64(4.662870059599236)], [137, np.float64(4.395471806759092)], [138, np.float64(4.326564811103165)], [139, np.float64(4.316181453695313)], [140, np.float64(4.560461686686319)], [141, np.float64(4.656132928732706)], [142, np.float64(4.508444085055625)], [143, np.float64(4.123936642182685)], [144, np.float64(4.5599280254550205)], [145, np.float64(4.100937379302941)], [146, np.float64(4.50203241854832)], [147, np.float64(4.559189868993277)], [148, np.float64(4.332780613706294)], [149, np.float64(4.620192272440231)], [150, np.float64(4.561010805217066)], [151, np.float64(4.409916717338579)], [152, np.float64(4.1957000243016225)], [153, np.float64(4.265024164053753)], [154, np.float64(4.159277014195877)], [155, np.float64(4.213758743361985)], [156, np.float64(4.023689546491389)], [157, np.float64(4.093557418501295)], [158, np.float64(4.163221609657533)], [159, np.float64(4.510273018723277)], [160, np.float64(4.494318330364756)], [161, np.float64(4.445835442469199)], [162, np.float64(3.8431714215281514)], [163, np.float64(4.265698176709863)], [164, np.float64(4.478130937880407)], [165, np.float64(4.01324807989708)], [166, np.float64(3.99557426436352)], [167, np.float64(4.463836340661099)], [168, np.float64(4.191210822720957)], [169, np.float64(3.990170122952228)], [170, np.float64(4.259339920017146)], [171, np.float64(3.8675238680005624)], [172, np.float64(4.249122667359533)], [173, np.float64(3.959472220336147)], [174, np.float64(4.288362982920653)], [175, np.float64(4.111226126731706)], [176, np.float64(4.1574047526386275)], [177, np.float64(4.139983144457038)], [178, np.float64(4.010659882426062)], [179, np.float64(4.117784770873533)], [180, np.float64(4.392504886942854)], [181, np.float64(4.487124733904124)], [182, np.float64(4.450053155848044)], [183, np.float64(4.272857156290929)], [184, np.float64(4.343021357291344)], [185, np.float64(3.8641592311533897)], [186, np.float64(4.452519031936353)], [187, np.float64(4.204239267300034)], [188, np.float64(4.614208279055545)], [189, np.float64(4.193304328998008)], [190, np.float64(4.11028909931946)], [191, np.float64(4.046424687584321)], [192, np.float64(4.102557341605845)], [193, np.float64(3.7528677701114908)], [194, np.float64(4.080958347322267)], [195, np.float64(4.141666323480557)], [196, np.float64(4.264927526364818)], [197, np.float64(4.330079235518727)], [198, np.float64(4.483660624298431)], [199, np.float64(4.153698311980865)]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="menambahkan-label-berdasarkan-real-dataset">
+<h2>Menambahkan label berdasarkan real dataset<a class="headerlink" href="#menambahkan-label-berdasarkan-real-dataset" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">200</span><span class="p">):</span>
+  <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">99</span><span class="p">:</span>
+    <span class="n">matrix_final</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;buka&#39;</span><span class="p">)</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">matrix_final</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;tutup&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="mengurutkan-nilai-dwt">
+<h2>Mengurutkan Nilai DWT<a class="headerlink" href="#mengurutkan-nilai-dwt" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_urut</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">matrix_final</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data_urut</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1, np.float64(2.285439958765221), &#39;buka&#39;], [0, np.float64(2.3277324383474234), &#39;buka&#39;], [5, np.float64(2.6836438503501716), &#39;buka&#39;], [6, np.float64(2.8886372751105642), &#39;buka&#39;], [2, np.float64(2.9208939969009693), &#39;buka&#39;], [7, np.float64(3.1307778532462254), &#39;buka&#39;], [3, np.float64(3.2182455901021054), &#39;buka&#39;], [4, np.float64(3.31206854135007), &#39;buka&#39;], [8, np.float64(3.312537657880684), &#39;buka&#39;], [9, np.float64(3.5183104596360857), &#39;buka&#39;], [57, np.float64(3.5222394824931214), &#39;buka&#39;], [31, np.float64(3.553284647464119), &#39;buka&#39;], [52, np.float64(3.579890368029975), &#39;buka&#39;], [53, np.float64(3.588033153300932), &#39;buka&#39;], [70, np.float64(3.6678932072485892), &#39;buka&#39;], [10, np.float64(3.689102454367805), &#39;buka&#39;], [50, np.float64(3.6917962561284305), &#39;buka&#39;], [35, np.float64(3.7048448901163273), &#39;buka&#39;], [43, np.float64(3.718823971220277), &#39;buka&#39;], [193, np.float64(3.7528677701114908), &#39;tutup&#39;], [68, np.float64(3.7659202778434095), &#39;buka&#39;], [34, np.float64(3.782676446313269), &#39;buka&#39;], [20, np.float64(3.7905814885188023), &#39;buka&#39;], [86, np.float64(3.7918361057688377), &#39;buka&#39;], [38, np.float64(3.80880514921502), &#39;buka&#39;], [60, np.float64(3.8150095632859786), &#39;buka&#39;], [42, np.float64(3.8187192069033915), &#39;buka&#39;], [66, np.float64(3.825459523300755), &#39;buka&#39;], [54, np.float64(3.833613974036969), &#39;buka&#39;], [162, np.float64(3.8431714215281514), &#39;tutup&#39;], [106, np.float64(3.8470226700243044), &#39;tutup&#39;], [185, np.float64(3.8641592311533897), &#39;tutup&#39;], [171, np.float64(3.8675238680005624), &#39;tutup&#39;], [21, np.float64(3.8782254011166994), &#39;buka&#39;], [61, np.float64(3.8991923093446275), &#39;buka&#39;], [24, np.float64(3.899319126393814), &#39;buka&#39;], [12, np.float64(3.923239869317818), &#39;buka&#39;], [49, np.float64(3.9279852467246203), &#39;buka&#39;], [36, np.float64(3.9350876558428776), &#39;buka&#39;], [51, np.float64(3.935883559279984), &#39;buka&#39;], [108, np.float64(3.939171907358673), &#39;tutup&#39;], [62, np.float64(3.9533921459267307), &#39;buka&#39;], [173, np.float64(3.959472220336147), &#39;tutup&#39;], [25, np.float64(3.9629346041743077), &#39;buka&#39;], [58, np.float64(3.9664007431951673), &#39;buka&#39;], [37, np.float64(3.9670256790010248), &#39;buka&#39;], [45, np.float64(3.9774099777797707), &#39;buka&#39;], [84, np.float64(3.977480535362717), &#39;buka&#39;], [11, np.float64(3.9800422149787438), &#39;buka&#39;], [14, np.float64(3.984002467873207), &#39;buka&#39;], [78, np.float64(3.9861681581525343), &#39;buka&#39;], [169, np.float64(3.990170122952228), &#39;tutup&#39;], [166, np.float64(3.99557426436352), &#39;tutup&#39;], [55, np.float64(3.998843411563069), &#39;buka&#39;], [85, np.float64(3.999280724508174), &#39;buka&#39;], [87, np.float64(4.000758436550542), &#39;buka&#39;], [89, np.float64(4.00382622952601), &#39;buka&#39;], [59, np.float64(4.007927771354259), &#39;buka&#39;], [178, np.float64(4.010659882426062), &#39;tutup&#39;], [17, np.float64(4.013194409790969), &#39;buka&#39;], [165, np.float64(4.01324807989708), &#39;tutup&#39;], [156, np.float64(4.023689546491389), &#39;tutup&#39;], [64, np.float64(4.04105483992484), &#39;buka&#39;], [72, np.float64(4.045925754980025), &#39;buka&#39;], [191, np.float64(4.046424687584321), &#39;tutup&#39;], [80, np.float64(4.046458064208782), &#39;buka&#39;], [71, np.float64(4.046660177463136), &#39;buka&#39;], [88, np.float64(4.052070603337472), &#39;buka&#39;], [44, np.float64(4.053012668055611), &#39;buka&#39;], [63, np.float64(4.054220398515477), &#39;buka&#39;], [75, np.float64(4.054810340192847), &#39;buka&#39;], [39, np.float64(4.067368786776174), &#39;buka&#39;], [46, np.float64(4.067677640947397), &#39;buka&#39;], [73, np.float64(4.071069063365194), &#39;buka&#39;], [194, np.float64(4.080958347322267), &#39;tutup&#39;], [157, np.float64(4.093557418501295), &#39;tutup&#39;], [145, np.float64(4.100937379302941), &#39;tutup&#39;], [56, np.float64(4.101655290362898), &#39;buka&#39;], [192, np.float64(4.102557341605845), &#39;tutup&#39;], [41, np.float64(4.10667477070107), &#39;buka&#39;], [190, np.float64(4.11028909931946), &#39;tutup&#39;], [175, np.float64(4.111226126731706), &#39;tutup&#39;], [76, np.float64(4.116467735847339), &#39;buka&#39;], [179, np.float64(4.117784770873533), &#39;tutup&#39;], [143, np.float64(4.123936642182685), &#39;tutup&#39;], [47, np.float64(4.126643393602802), &#39;buka&#39;], [81, np.float64(4.1329018135349616), &#39;buka&#39;], [177, np.float64(4.139983144457038), &#39;tutup&#39;], [195, np.float64(4.141666323480557), &#39;tutup&#39;], [67, np.float64(4.146370789316006), &#39;buka&#39;], [18, np.float64(4.146949949056836), &#39;buka&#39;], [199, np.float64(4.153698311980865), &#39;tutup&#39;], [176, np.float64(4.1574047526386275), &#39;tutup&#39;], [16, np.float64(4.158424402474599), &#39;buka&#39;], [154, np.float64(4.159277014195877), &#39;tutup&#39;], [22, np.float64(4.16155103104739), &#39;buka&#39;], [158, np.float64(4.163221609657533), &#39;tutup&#39;], [32, np.float64(4.165245308335113), &#39;buka&#39;], [65, np.float64(4.17209824498414), &#39;buka&#39;], [79, np.float64(4.175058067835156), &#39;buka&#39;], [105, np.float64(4.175112949805577), &#39;tutup&#39;], [130, np.float64(4.177312407150181), &#39;tutup&#39;], [48, np.float64(4.180794362034623), &#39;buka&#39;], [99, np.float64(4.183194626736848), &#39;buka&#39;], [90, np.float64(4.188998515990488), &#39;buka&#39;], [120, np.float64(4.189528609620404), &#39;tutup&#39;], [168, np.float64(4.191210822720957), &#39;tutup&#39;], [29, np.float64(4.191314803307133), &#39;buka&#39;], [189, np.float64(4.193304328998008), &#39;tutup&#39;], [152, np.float64(4.1957000243016225), &#39;tutup&#39;], [23, np.float64(4.199914461483816), &#39;buka&#39;], [28, np.float64(4.201176065763057), &#39;buka&#39;], [100, np.float64(4.203735461730391), &#39;tutup&#39;], [187, np.float64(4.204239267300034), &#39;tutup&#39;], [27, np.float64(4.205174112163949), &#39;buka&#39;], [113, np.float64(4.205450944925907), &#39;tutup&#39;], [155, np.float64(4.213758743361985), &#39;tutup&#39;], [110, np.float64(4.2187661158149385), &#39;tutup&#39;], [13, np.float64(4.220388176525509), &#39;buka&#39;], [83, np.float64(4.226573885356072), &#39;buka&#39;], [19, np.float64(4.243490312067787), &#39;buka&#39;], [94, np.float64(4.244904471973181), &#39;buka&#39;], [172, np.float64(4.249122667359533), &#39;tutup&#39;], [15, np.float64(4.25420372664838), &#39;buka&#39;], [170, np.float64(4.259339920017146), &#39;tutup&#39;], [26, np.float64(4.264204265392749), &#39;buka&#39;], [196, np.float64(4.264927526364818), &#39;tutup&#39;], [153, np.float64(4.265024164053753), &#39;tutup&#39;], [163, np.float64(4.265698176709863), &#39;tutup&#39;], [114, np.float64(4.266838677159941), &#39;tutup&#39;], [183, np.float64(4.272857156290929), &#39;tutup&#39;], [91, np.float64(4.280551142021861), &#39;buka&#39;], [92, np.float64(4.2809798564947386), &#39;buka&#39;], [77, np.float64(4.286834833754183), &#39;buka&#39;], [174, np.float64(4.288362982920653), &#39;tutup&#39;], [95, np.float64(4.291935606240436), &#39;buka&#39;], [74, np.float64(4.29242583367423), &#39;buka&#39;], [118, np.float64(4.2968377159241875), &#39;tutup&#39;], [30, np.float64(4.297464403828622), &#39;buka&#39;], [116, np.float64(4.297629744004122), &#39;tutup&#39;], [97, np.float64(4.302935902703064), &#39;buka&#39;], [139, np.float64(4.316181453695313), &#39;tutup&#39;], [69, np.float64(4.320936380402184), &#39;buka&#39;], [109, np.float64(4.323989518872455), &#39;tutup&#39;], [33, np.float64(4.326078048944187), &#39;buka&#39;], [138, np.float64(4.326564811103165), &#39;tutup&#39;], [98, np.float64(4.328708469585393), &#39;buka&#39;], [197, np.float64(4.330079235518727), &#39;tutup&#39;], [125, np.float64(4.332180232013238), &#39;tutup&#39;], [148, np.float64(4.332780613706294), &#39;tutup&#39;], [119, np.float64(4.334643614915107), &#39;tutup&#39;], [104, np.float64(4.340669798304871), &#39;tutup&#39;], [184, np.float64(4.343021357291344), &#39;tutup&#39;], [103, np.float64(4.356832139008057), &#39;tutup&#39;], [121, np.float64(4.360499151197666), &#39;tutup&#39;], [111, np.float64(4.373982050205426), &#39;tutup&#39;], [107, np.float64(4.376741402413952), &#39;tutup&#39;], [82, np.float64(4.379149520571387), &#39;buka&#39;], [40, np.float64(4.38459134518594), &#39;buka&#39;], [180, np.float64(4.392504886942854), &#39;tutup&#39;], [96, np.float64(4.39323113231232), &#39;buka&#39;], [93, np.float64(4.394315010717635), &#39;buka&#39;], [137, np.float64(4.395471806759092), &#39;tutup&#39;], [151, np.float64(4.409916717338579), &#39;tutup&#39;], [124, np.float64(4.4227345907303395), &#39;tutup&#39;], [129, np.float64(4.426702036713683), &#39;tutup&#39;], [131, np.float64(4.442113415328985), &#39;tutup&#39;], [161, np.float64(4.445835442469199), &#39;tutup&#39;], [182, np.float64(4.450053155848044), &#39;tutup&#39;], [123, np.float64(4.451295153139351), &#39;tutup&#39;], [186, np.float64(4.452519031936353), &#39;tutup&#39;], [167, np.float64(4.463836340661099), &#39;tutup&#39;], [164, np.float64(4.478130937880407), &#39;tutup&#39;], [198, np.float64(4.483660624298431), &#39;tutup&#39;], [126, np.float64(4.484629368760492), &#39;tutup&#39;], [181, np.float64(4.487124733904124), &#39;tutup&#39;], [122, np.float64(4.487206986975777), &#39;tutup&#39;], [160, np.float64(4.494318330364756), &#39;tutup&#39;], [117, np.float64(4.4943591051150475), &#39;tutup&#39;], [146, np.float64(4.50203241854832), &#39;tutup&#39;], [133, np.float64(4.505907946892275), &#39;tutup&#39;], [142, np.float64(4.508444085055625), &#39;tutup&#39;], [159, np.float64(4.510273018723277), &#39;tutup&#39;], [102, np.float64(4.519173509059657), &#39;tutup&#39;], [135, np.float64(4.540415383663418), &#39;tutup&#39;], [147, np.float64(4.559189868993277), &#39;tutup&#39;], [144, np.float64(4.5599280254550205), &#39;tutup&#39;], [140, np.float64(4.560461686686319), &#39;tutup&#39;], [150, np.float64(4.561010805217066), &#39;tutup&#39;], [112, np.float64(4.565436764855177), &#39;tutup&#39;], [132, np.float64(4.574367127988419), &#39;tutup&#39;], [115, np.float64(4.5957853528057395), &#39;tutup&#39;], [101, np.float64(4.5988007488309295), &#39;tutup&#39;], [188, np.float64(4.614208279055545), &#39;tutup&#39;], [149, np.float64(4.620192272440231), &#39;tutup&#39;], [134, np.float64(4.625282876042095), &#39;tutup&#39;], [141, np.float64(4.656132928732706), &#39;tutup&#39;], [136, np.float64(4.662870059599236), &#39;tutup&#39;], [127, np.float64(4.6869230263352755), &#39;tutup&#39;], [128, np.float64(4.7170876090723475), &#39;tutup&#39;]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="kesimpulan">
+<h2>Kesimpulan<a class="headerlink" href="#kesimpulan" title="Link to this heading">#</a></h2>
+<section id="label-data-test-berdasarkan-nilai-dwt-terendah">
+<h3>Label Data Test Berdasarkan Nilai DWT Terendah<a class="headerlink" href="#label-data-test-berdasarkan-nilai-dwt-terendah" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">data_urut</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, np.float64(2.285439958765221), &#39;buka&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Berdasarkan hal tersebut dapat disimpulkan bahwa data test memiliki label buka, dengan nilai DWT terhadap data index 1 yakni sebesar 2.285439958765221.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Voice%20Identification.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Voice Identification</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#library-yang-dibutuhkan">Library yang dibutuhkan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengekstrak-data-time-series-dari-data-seara-dengan-label-buka-dan-tutup">Mengekstrak data time series dari data seara dengan label ‘Buka’ dan ‘tutup’</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-10-data-time-series-yang-dihasilkan">Hasil 10 data time series yang dihasilkan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-test">Data Test</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perhitungan-dynamic-time-wrapping">Perhitungan Dynamic Time Wrapping</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menambahkan-label-berdasarkan-real-dataset">Menambahkan label berdasarkan real dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengurutkan-nilai-dwt">Mengurutkan Nilai DWT</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">Kesimpulan</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#label-data-test-berdasarkan-nilai-dwt-terendah">Label Data Test Berdasarkan Nilai DWT Terendah</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Muhammad Fathan Alizain
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
